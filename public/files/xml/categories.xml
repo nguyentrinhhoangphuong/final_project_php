@@ -1,1 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?><book_store></book_store>
+<?xml version="1.0" encoding="UTF-8"?><book_store><category>
+								<id>2</id>
+								<name>Kinh Tế</name>
+								<picture>3snfyg8u.jpg</picture>
+							</category><category>
+								<id>3</id>
+								<name>Tin học</name>
+								<picture>zahorwby.jpg</picture>
+							</category><category>
+								<id>4</id>
+								<name> Kỹ Năng Sống</name>
+								<picture>bntdur5l.jpg</picture>
+							</category><category>
+								<id>5</id>
+								<name>Thiếu Nhi</name>
+								<picture>kt5h9ica.jpg</picture>
+							</category><category>
+								<id>6</id>
+								<name> Thường Thức - Đời Sống</name>
+								<picture>tv8basyz.jpg</picture>
+							</category><category>
+								<id>7</id>
+								<name>Ngoại Ngữ - Từ Điển</name>
+								<picture>zruvqadp.jpg</picture>
+							</category><category>
+								<id>8</id>
+								<name>Truyện Tranh</name>
+								<picture>5hd9kq6s.jpeg</picture>
+							</category><category>
+								<id>9</id>
+								<name> Văn Hoá - Nghệ Thuật</name>
+								<picture>btkjrfal.jpg</picture>
+							</category><category>
+								<id>12</id>
+								<name>qwe</name>
+								<picture></picture>
+							</category></book_store>

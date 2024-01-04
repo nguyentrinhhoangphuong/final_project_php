@@ -159,7 +159,6 @@ class Helper
 	// Create Image
 	public static function createImage($folder, $prefix, $pictureName, $attribute = null)
 	{
-
 		$class	= !empty($attribute['class']) ? $attribute['class'] : '';
 		$width	= !empty($attribute['width']) ? $attribute['width'] : '';
 		$height	= !empty($attribute['height']) ? $attribute['height'] : '';
@@ -167,11 +166,22 @@ class Helper
 
 		$picturePath	= UPLOAD_PATH . $folder . DS . $prefix . $pictureName;
 		if (file_exists($picturePath) == true) {
-			$picture		= '<img  ' . $strAttribute . ' src="' . UPLOAD_URL . $folder . DS . $prefix . $pictureName . '">';
+			$picture	= '<img  ' . $strAttribute . ' src="' . UPLOAD_URL . $folder . DS . $prefix . $pictureName . '">';
 		} else {
 			$picture	= '<img ' . $strAttribute . ' src="' . UPLOAD_URL . $folder . DS . $prefix . 'default.jpg' . '">';
 		}
 
+		return $picture;
+	}
+
+	public static function getImage($folder, $pictureName)
+	{
+		$picturePath	= UPLOAD_PATH . $folder . DS  . $pictureName;
+		if (file_exists($picturePath) == true) {
+			$picture	= '<img src="' . UPLOAD_URL . $folder . DS  . $pictureName . '">';
+		} else {
+			$picture	= '<img src="' . UPLOAD_URL . $folder . DS  . 'default.jpg' . '">';
+		}
 		return $picture;
 	}
 
@@ -196,5 +206,18 @@ class Helper
 			</td>
 		</tr>
 	</tfoot>";
+	}
+
+	public static function cmsSaleOff($item)
+	{
+		$price = 0;
+		if ($item['sale_off'] > 0) {
+			$priceSaleOff = (100 - $item['sale_off']) * $item['price'] / 100;
+			$price = "<span class='text-accent'>" . number_format($priceSaleOff) . "<small>đ</small></span>        ";
+			$price .= "<del class='text-muted fs-lg me-3'>" . number_format($item['price']) . "<small>đ</small></small></del>";
+		} else {
+			$price = "<span class='text-accent'>" . number_format($item['price']) . "</span>";
+		}
+		return $price;
 	}
 }

@@ -50,16 +50,19 @@ class Bootstrap
 					$this->callLoginAction($module);
 				}
 				// MODULE DEFAULT
-			} else if ($module == 'default') {
-				if ($controller == 'user') {
-					if ($logged == true) {
-						$this->_controllerObject->$actionName();
-					} else {
-						$this->callLoginAction($module);
-					}
-				} else {
-					$this->_controllerObject->$actionName();
-				}
+			} else if ($module == 'shop') {
+				$this->_controllerObject->$actionName();
+				// if ($controller == 'user') {
+				// 	if ($logged == true) {
+				// 		$this->_controllerObject->$actionName();
+				// 	} else {
+				// 		$this->callLoginAction($module);
+				// 	}
+				// } else {
+				// 	$this->_controllerObject->$actionName();
+				// }
+			} else if ($module == 'shop') {
+				$this->_controllerObject->$actionName();
 			}
 		} else {
 			URL::redirect('default', 'index', 'notice', array('type' => 'not-url'));
