@@ -19,7 +19,11 @@ class IndexController extends Controller
 	public function indexAction()
 	{
 		$this->_view->specialBooks	= $this->_model->listItem($this->_arrParam, array('task' => 'books-special'));
-		$this->_view->newBooks		= $this->_model->listItem($this->_arrParam, array('task' => 'books-new'));
+		$this->_view->blog   		= $this->_model->listItem($this->_arrParam, array('task' => 'blog'));
+		$this->_view->bookByCategory = $this->_model->listItem($this->_arrParam, array('task' => 'book-by-category'));
+		$this->_view->listCategory = $this->_model->listItem($this->_arrParam, array('task' => 'list-category'));
+		$this->_view->_slider = true;
+		$this->_view->_mail = true;
 		$this->_view->render('index/index');
 	}
 

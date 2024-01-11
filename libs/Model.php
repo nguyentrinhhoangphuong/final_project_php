@@ -225,6 +225,16 @@ class Model
         return false;
     }
 
+    public function checkId($query)
+    {
+        $result = $this->query($query);
+        $numRows = $result->num_rows;
+        if ($numRows > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public function createSearchQuery($fields, $searchValue)
     {
         $result = '';

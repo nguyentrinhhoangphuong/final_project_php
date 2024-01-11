@@ -14,6 +14,13 @@
     <!-- Navbar Books Store-->
     <?php include_once  'html/navbar/index.php'; ?>
 
+    <!-- Hero slider-->
+    <?php
+    if ($this->_slider) {
+      include_once BLOCK_PATH . "shop/heroSlider.php";
+    }
+    ?>
+
     <!-- Products grid (Trending products)-->
     <?php require_once MODULE_PATH . $this->_moduleName . DS . 'views' . DS . $this->_fileView . '.php'; ?>
 

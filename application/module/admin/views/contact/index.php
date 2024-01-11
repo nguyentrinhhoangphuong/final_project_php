@@ -78,9 +78,6 @@ $strMessage = Helper::cmsMessage($message);
 						//id', 'fullname', 'email', 'title', 'phone', 'created', 'created_by', 'modified', 'modified_by', 'status', 'ordering'
 						$i = 0;
 						foreach ($this->Items as $key => $value) {
-							echo '<pre style="color:red">';
-							print_r($value);
-							echo '</pre>';
 							$id 		= $value['id'];
 							$ckb		= '<input type="checkbox" name="cid[]" value="' . $id . '">';
 							$name		= $value['fullname'];

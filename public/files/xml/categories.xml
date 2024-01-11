@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><book_store><category>
-								<id>2</id>
-								<name>Kinh Tế</name>
-								<picture>3snfyg8u.jpg</picture>
+								<id>1</id>
+								<name>Văn Học - Tiểu Thuyết</name>
+								<picture>hft8q1c3.jpg</picture>
 							</category><category>
 								<id>3</id>
 								<name>Tin học</name>
@@ -30,8 +30,4 @@
 								<id>9</id>
 								<name> Văn Hoá - Nghệ Thuật</name>
 								<picture>btkjrfal.jpg</picture>
-							</category><category>
-								<id>12</id>
-								<name>qwe</name>
-								<picture></picture>
 							</category></book_store>

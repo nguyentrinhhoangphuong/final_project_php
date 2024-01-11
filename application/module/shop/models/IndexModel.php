@@ -66,6 +66,7 @@ class IndexModel extends Model
 			$result		= $this->fetchAll($query);
 			return $result;
 		}
+
 		if ($option['task'] == 'books-new') {
 			$query[]	= "SELECT `b`.`id`, `b`.`name`,`b`.`price`,`b`.`sale_off`, `b`.`picture`, `b`.`category_id`, `c`.`name` AS `category_name`";
 			$query[]	= "FROM `" . TBL_BOOK . "` AS `b`, `" . TBL_CATEGORY . "` AS `c`";
@@ -75,6 +76,34 @@ class IndexModel extends Model
 
 			$query		= implode(" ", $query);
 			$result		= $this->fetchAll($query);
+			return $result;
+		}
+
+		if ($option['task'] == 'blog') {
+			$query = "SELECT `id`, `name`, `picture`, `content`, `created_by` FROM " . TBL_BLOG . " WHERE `id` > 0 AND `status` = 1";
+			$results = $this->fetchAll($query);
+			return $results;
+		}
+
+		if ($option['task'] == 'list-category') {
+			$query[]	= "SELECT `id`, `name`,`picture`";
+			$query[]	= "FROM " . TBL_CATEGORY;
+			$query[]	= "WHERE `status` = 1";
+			$query[]	= "ORDER BY `name`";
+
+			$query		= implode(" ", $query);
+			$result		= $this->fetchAll($query);
+			return $result;
+		}
+
+		if ($option['task'] == 'book-by-category') {
+			$query[] = "SELECT b.id, b.name, b.price, b.picture, b.sale_off, c.id AS category_id, c.name AS category_name";
+			$query[] = "FROM `book` as b";
+			$query[] = "JOIN `category` AS c ON b.category_id = c.id";
+			$query[] = "WHERE c.status = 1";
+
+			$query	 = implode(" ", $query);
+			$result	 = $this->fetchAll($query);
 			return $result;
 		}
 	}

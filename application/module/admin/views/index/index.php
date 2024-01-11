@@ -8,6 +8,8 @@ $arrMenu	= array(
 	array('link' => URL::createLink('admin', 'user', 'index'), 'name' => 'User manager', 'image' => 'icon-48-user'),
 	array('link' => URL::createLink('admin', 'contact', 'index'), 'name' => 'Contact manager', 'image' => 'icon-48-contacts'),
 	array('link' => URL::createLink('admin', 'faq', 'index'), 'name' => 'FAQ manager', 'image' => 'icon-48-preview'),
+	array('link' => URL::createLink('admin', 'slider', 'index'), 'name' => 'Slider manger', 'image' => 'icon-48-banner'),
+	array('link' => URL::createLink('admin', 'blog', 'index'), 'name' => 'Blog manger', 'image' => 'icon-48-newsfeeds'),
 );
 foreach ($arrMenu as $key => $value) {
 	$image	= $imageURL . '/header/' . $value['image'] . '.png';

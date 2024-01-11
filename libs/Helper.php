@@ -220,4 +220,22 @@ class Helper
 		}
 		return $price;
 	}
+
+	public static function cmsTextArea($name, $id, $value, $rows = 4, $cols = 50, $class = '')
+	{
+		$xhtml = '<textarea name="' . $name . '" id="' . $id . '" rows="' . $rows . '" cols="' . $cols . '" class="' . $class . '">' . $value . '</textarea>';
+		return $xhtml;
+	}
+
+
+	public static function shortenString($string, $len = 150)
+	{
+		if (strlen($string) > $len) {
+			$string = trim(substr($string, 0, $len));
+			$string = substr($string, 0, strrpos($string, " ")) . "&hellip;";
+		} else {
+			$string .= "&hellip;";
+		}
+		return $string;
+	}
 }

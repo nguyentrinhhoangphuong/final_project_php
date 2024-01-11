@@ -2,6 +2,7 @@
 // BOOK INFO
 $bookInfo	= $this->bookInfo;
 $categoryName = $bookInfo['category_name'];
+$linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $bookInfo['category_id']));
 $name = $bookInfo['name'];
 $picture 		= Helper::createImage('book', '', $bookInfo['picture'], ['width' => 90]);
 $picturePath	= UPLOAD_PATH . 'book' . DS . '98x150-' . $bookInfo['picture'];
@@ -79,7 +80,7 @@ foreach ($bookRelate as $item) {
 						<a class="text-nowrap" href="index-2.html"><i class="ci-home"></i>Home</a>
 					</li>
 					<li class="breadcrumb-item text-nowrap">
-						<a href="#"><?php echo $categoryName ?></a>
+						<a href="<?php echo $linkCategory ?>"><?php echo $categoryName ?></a>
 					</li>
 					<li class="breadcrumb-item text-nowrap active" aria-current="page">
 						<?php echo $name; ?>
@@ -315,7 +316,7 @@ foreach ($bookRelate as $item) {
 <hr class="mb-5" />
 <!-- Product carousel (You may also like)-->
 <div class="container pt-lg-2 pb-5 mb-md-3">
-	<h2 class="h3 text-center pb-4">You may also like</h2>
+	<h2 class="h3 text-center pb-4">Bạn có thể thích</h2>
 	<div class="tns-carousel tns-controls-static tns-controls-outside">
 		<div class="tns-carousel-inner" data-carousel-options='{"items": 2, "controls": true, "nav": false, "responsive": {"0":{"items":1},"500":{"items":2, "gutter": 18},"768":{"items":3, "gutter": 20}, "1100":{"items":4, "gutter": 30}}}'>
 			<!-- Product-->

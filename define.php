@@ -40,6 +40,8 @@ define('TBL_CART', 'cart');
 define('TBL_CONTACT', 'contact');
 define('TBL_FAQ_CATEGORY', 'faq_category');
 define('TBL_FAQ_ITEM', 'faq_item');
+define('TBL_SLIDER', 'sider');
+define('TBL_BLOG', 'blog');
 
 // ====================== CONFIG ===========================
 define('TIME_LOGIN', 3600);

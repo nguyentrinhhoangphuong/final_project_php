@@ -35,4 +35,15 @@ class BookController extends Controller
 		$this->_view->bookRelate	= $this->_model->listItem($this->_arrParam, array('task' => 'books-relate'));
 		$this->_view->render('book/relate', false);
 	}
+
+	// ACTION: SALES OFF BOOK
+	public function salesAction()
+	{
+		$this->_templateObj->setFolderTemplate('shop/main/');
+		$this->_templateObj->setFileTemplate('index_sidebar.php');
+		$this->_templateObj->setFileConfig('template.ini');
+		$this->_templateObj->load();
+		$this->_view->bookSales = $this->_model->listItem($this->_arrParam, array('task' => 'books-sales'));
+		$this->_view->render('book/sales', true);
+	}
 }

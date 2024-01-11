@@ -4,9 +4,6 @@
 <?php
 $xhtml = '';
 if (!empty($this->specialBooks)) {
-	echo '<pre style="color:red">';
-	print_r($this->specialBooks);
-	echo '</pre>';
 	foreach ($this->specialBooks as $key => $value) {
 		$name	= $value['name'];
 

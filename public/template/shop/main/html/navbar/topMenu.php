@@ -1,28 +1,12 @@
-<?php
-
-?>
-
 <div class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-        <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="index-2.html"><img src="img/logo-dark.png" width="142" alt="Cartzilla" /></a><a class="navbar-brand d-sm-none me-2" href="index-2.html"><img src="img/logo-icon.png" width="74" alt="Cartzilla" /></a>
+        <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="">
+            Book Store
+        </a>
         <!-- Search-->
         <div class="input-group d-none d-lg-flex flex-nowrap mx-4">
             <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-            <input class="form-control rounded-start w-100" type="text" placeholder="Search for products" />
-            <select class="form-select flex-shrink-0" style="width: 10.5rem">
-                <!--  TODO -->
-                <option>All categories</option>
-                <option>Computers</option>
-                <option>Smartphones</option>
-                <option>TV, Video, Audio</option>
-                <option>Cameras</option>
-                <option>Headphones</option>
-                <option>Wearables</option>
-                <option>Printers</option>
-                <option>Video Games</option>
-                <option>Home Music</option>
-                <option>Data Storage</option>
-            </select>
+            <input class="form-control rounded-start w-100" type="text" placeholder="Search for books" />
         </div>
         <!-- Toolbar-->
         <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
@@ -36,11 +20,11 @@
                     <i class="navbar-tool-icon ci-user"></i>
                 </div>
                 <div class="navbar-tool-text ms-n3">
-                    <small>Hello, Sign in</small>My Account
+                    <small>Xin chào, Đăng nhập</small>Tài khoản
                 </div>
             </a>
             <div class="navbar-tool dropdown ms-3">
-                <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>My Cart</small>$1,247.00</a>
+                <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>Giỏ hàng</small>$1,247.00</a>
                 <!-- Cart dropdown-->
                 <div class="dropdown-menu dropdown-menu-end">
                     <div class="widget widget-cart px-3 pt-2 pb-3" style="width: 20rem">

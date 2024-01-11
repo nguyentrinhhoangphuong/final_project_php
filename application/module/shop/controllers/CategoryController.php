@@ -5,8 +5,8 @@ class CategoryController extends Controller
 	public function __construct($arrParams)
 	{
 		parent::__construct($arrParams);
-		$this->_templateObj->setFolderTemplate('default/main/');
-		$this->_templateObj->setFileTemplate('index.php');
+		$this->_templateObj->setFolderTemplate('shop/main/');
+		$this->_templateObj->setFileTemplate('index_sidebar.php');
 		$this->_templateObj->setFileConfig('template.ini');
 		$this->_templateObj->load();
 	}
@@ -14,9 +14,14 @@ class CategoryController extends Controller
 	// ACTION: LIST CATGORIES
 	public function indexAction()
 	{
-		require_once LIBRARY_EXT_PATH . 'XML.php';
-		$this->_view->_title 		= 'Category List';
-		$this->_view->Items 		= XML::getContentXML('categories.xml');
+		$this->_view->_title = 'Category List';
+		$this->setModel("shop", "book");
+
+		$totalItems = $this->_model->countItem();
+		$configPagination = array('totalItemsPerPage' => 6, 'pageRange' => 5);
+		$this->setPagination($configPagination);
+		$this->_view->pagination = new Pagination($totalItems, $this->_pagination);
+		$this->_view->listBookByCategory = $this->_model->listItem($this->_arrParam, array('task' => 'books-in-cat'));
 		$this->_view->render('category/index');
 	}
 }

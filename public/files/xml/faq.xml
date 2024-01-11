@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?><book_store></book_store>
+<?xml version="1.0" encoding="UTF-8"?><book_store><category>
+								<id>1</id>
+								<name>Thông tin sản phẩm</name>
+								<picture></picture>
+							</category><category>
+								<id>2</id>
+								<name>Thông tin liên hệ</name>
+								<picture></picture>
+							</category><category>
+								<id>4</id>
+								<name>Hình thức thanh toán</name>
+								<picture></picture>
+							</category><category>
+								<id>5</id>
+								<name>Hình thức vận chuyển</name>
+								<picture></picture>
+							</category><category>
+								<id>6</id>
+								<name>Chính sách ưu đãi</name>
+								<picture></picture>
+							</category></book_store>
