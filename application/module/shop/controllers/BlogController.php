@@ -15,10 +15,10 @@ class BlogController extends Controller
 	public function indexAction()
 	{
 		$this->_view->_title = 'Tất cả bài viết';
-		// $totalItems = $this->_model->countItem();
-		// $configPagination = array('totalItemsPerPage' => 6, 'pageRange' => 5);
-		// $this->setPagination($configPagination);
-		// $this->_view->pagination = new Pagination($totalItems, $this->_pagination);
+		$totalItems = $this->_model->countItem();
+		$blogsPerPage = 6; // Số sách trên mỗi trang
+		$this->_view->paging = new Paging($totalItems, $blogsPerPage);
+		$this->_arrParam['paging'] = $this->_view->paging;
 		$this->_view->_blogs = $this->_model->listItem($this->_arrParam, array('task' => 'blogs'));
 		$this->_view->render('blog/index');
 	}

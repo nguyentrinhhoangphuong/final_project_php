@@ -18,7 +18,9 @@ class CategoryController extends Controller
 		$this->setModel("shop", "book");
 		$this->_arrParam['category_id'] = $_GET['category_id'];
 
-		$totalItems = $this->_model->countItem($this->_arrParam); // Số lượng sách tổng cộng
+		$this->_arrParam['search_term'] = $_GET['search_term'];
+
+		$totalItems = $this->_model->countItem($this->_arrParam);
 		$booksPerPage = 9; // Số sách trên mỗi trang
 		$this->_view->paging = new Paging($totalItems, $booksPerPage);
 		$this->_arrParam['paging'] = $this->_view->paging;

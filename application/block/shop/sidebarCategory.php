@@ -1,4 +1,5 @@
 <?php
+$displayMode = Helper::showListGrid();
 $model = new Model();
 
 $query = "SELECT
@@ -23,7 +24,11 @@ array_unshift($result, $newItem);
 
 $xhtmlBookCategory = "";
 foreach ($result as $item) {
-    $linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $item['id'], 'page' => 1));
+    $linkCategory = URL::createLink('shop', 'category', 'index', array(
+        'category_id' => $item['id'],
+        'display_mode' => $displayMode,
+        'page' => 1
+    ));
 
     if ($_GET['category_id'] == $item['id']) {
         $active = "active";

@@ -4,21 +4,22 @@
             <div class="modal-header bg-secondary">
                 <ul class="nav nav-tabs card-header-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign in</a>
+                        <a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Đăng nhập</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign up</a>
+                        <a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Đăng ký</a>
                     </li>
                 </ul>
                 <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <div class="modal-body tab-content py-4">
                 <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
                     <div class="mb-3">
-                        <label class="form-label" for="si-email">Email address</label>
+                        <label class="form-label" for="si-email">Email</label>
                         <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required />
                         <div class="invalid-feedback">
-                            Please provide a valid email address.
+                            Vui lòng cung cấp một địa chỉ email hợp lệ.
                         </div>
                     </div>
                     <div class="mb-3">
@@ -35,12 +36,13 @@
                             <input class="form-check-input" type="checkbox" id="si-remember" />
                             <label class="form-check-label" for="si-remember">Remember me</label>
                         </div>
-                        <a class="fs-sm" href="#">Forgot password?</a>
+                        <a class="fs-sm" href="#">Quên mật khẩu?</a>
                     </div>
                     <button class="btn btn-primary btn-shadow d-block w-100" type="submit">
-                        Sign in
+                        Đăng nhập
                     </button>
                 </form>
+                <!-- ======================================================== -->
                 <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
                     <div class="mb-3">
                         <label class="form-label" for="su-name">Full name</label>
@@ -48,10 +50,10 @@
                         <div class="invalid-feedback">Please fill in your name.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="su-email">Email address</label>
+                        <label for="su-email">Email</label>
                         <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required />
                         <div class="invalid-feedback">
-                            Please provide a valid email address.
+                            Vui lòng cung cấp một địa chỉ email hợp lệ.
                         </div>
                     </div>
                     <div class="mb-3">
@@ -73,7 +75,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary btn-shadow d-block w-100" type="submit">
-                        Sign up
+                        Đăng ký
                     </button>
                 </form>
             </div>

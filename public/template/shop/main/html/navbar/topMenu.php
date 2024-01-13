@@ -4,9 +4,10 @@
             Book Store
         </a>
         <!-- Search-->
+        <div id="search-book-url" data-url="<?php echo URL::createLink('shop', 'category', 'index', array()); ?>"></div>
         <div class="input-group d-none d-lg-flex flex-nowrap mx-4">
             <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-            <input class="form-control rounded-start w-100" type="text" placeholder="Search for books" />
+            <input class="form-control rounded-start w-100" id="searchBook" type="text" placeholder="Tìm sách" value="<?php echo $_GET['search_term'] ?? "" ?>" />
         </div>
         <!-- Toolbar-->
         <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">

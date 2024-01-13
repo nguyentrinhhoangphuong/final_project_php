@@ -21,19 +21,17 @@ class BlogModel extends Model
             $query[]    = "FROM `$this->table`";
             $query[]    = "WHERE `status`  = 1";
             $query[]    = "ORDER BY `id` DESC";
+            // PAGINATION
+            $pagination = $arrParam['paging'];
+            $limit    = $pagination->getLimit();
+            $totalItemsPerPage    = $pagination->getPageRow();
+            if ($totalItemsPerPage > 0 & $limit >= 0) {
+                $query[]    = "LIMIT $limit, $totalItemsPerPage";
+            }
             $query        = implode(" ", $query);
             $result        = $this->fetchAll($query);
             return $result;
         }
-
-        // PAGINATION
-        // $pagination = $arrParam['pagination'];
-        // $pagination['currentPage']     = $this->getPage();
-        // $totalItemsPerPage    = $pagination['totalItemsPerPage'];
-        // if ($totalItemsPerPage > 0) {
-        //     $position    = ($pagination['currentPage'] - 1) * $totalItemsPerPage;
-        //     $query[]    = "LIMIT $position, $totalItemsPerPage";
-        // }
     }
 
     public function infoItem($arrParam, $option = null)
@@ -48,5 +46,16 @@ class BlogModel extends Model
         $query = 'SELECT * FROM ' . TBL_BLOG . ' WHERE status = 1 AND id <> ' . $arrParam['blog_id'] . ' ORDER BY ID DESC LIMIT 0,5;';
         $result    = $this->fetchAll($query);
         return $result;
+    }
+
+    public function countItem()
+    {
+        $query[] = 'SELECT COUNT(`id`) AS total';
+        $query[] = 'FROM ' . TBL_BLOG;
+
+        $query        = implode(" ", $query);
+        $result        = $this->fetchRow($query);
+
+        return $result['total'];
     }
 }

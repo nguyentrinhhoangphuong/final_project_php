@@ -16,21 +16,38 @@ if ($checkId) {
     $result = $model->query($query);
     $totalRecords = $model->fetchRow($query)['totalRecords'];
 }
-
+$displayMode = Helper::showListGrid();
+$sortingOrder = isset($_GET['sorting_order']) ? $_GET['sorting_order'] : 'default';
 ?>
 <div class="d-flex justify-content-center justify-content-sm-between align-items-center pt-2 pb-4 pb-sm-5">
     <div class="d-flex flex-wrap">
         <div class="d-flex align-items-center flex-nowrap me-3 me-sm-4 pb-3">
             <label class="text-light fs-sm opacity-75 text-nowrap me-2 d-none d-sm-block" for="sorting">Sort by:</label>
-            <select class="form-select" id="sorting">
-                <option>Popularity</option>
-                <option>Low - Hight Price</option>
-                <option>High - Low Price</option>
-                <option>Average Rating</option>
-                <option>A - Z Order</option>
-                <option>Z - A Order</option>
-            </select><span class="fs-sm text-light opacity-75 text-nowrap ms-2 d-none d-md-block">of <?php echo $totalRecords ?> products</span>
+            <div id="base-url" data-url="<?php echo URL::createLink('shop', 'category', 'index', array(
+                                                'category_id' => $_GET['category_id'],
+                                                'search_term' => $_GET['search_term'],
+                                                'display_mode' => $_GET['display_mode'],
+                                                'sorting_order' => $sortingOrder,
+                                                'page' => $_GET['page']
+                                            )); ?>"></div>
+            <!-- Your select element -->
+            <select class="form-select" id="sorting" onchange="changeSorting()">
+                <option value="default" <?php echo ($sortingOrder == 'default') ? 'selected' : ''; ?>>Default</option>
+                <option value="low_high" <?php echo ($sortingOrder == 'low_high') ? 'selected' : ''; ?>>Low - High Price</option>
+                <option value="high_low" <?php echo ($sortingOrder == 'high_low') ? 'selected' : ''; ?>>High - Low Price</option>
+            </select>
+
+            <span class="fs-sm text-light opacity-75 text-nowrap ms-2 d-none d-md-block">of <?php echo $totalRecords ?> products</span>
         </div>
     </div>
-    <div class="d-none d-sm-flex pb-3"><a class="btn btn-icon nav-link-style bg-light text-dark disabled opacity-100 me-2" href="#"><i class="ci-view-grid"></i></a><a class="btn btn-icon nav-link-style nav-link-light" href="shop-list-rs.html"><i class="ci-view-list"></i></a></div>
+
+
+    <div class="d-none d-sm-flex pb-3">
+        <a class="btn btn-icon nav-link-style <?php echo ($displayMode == 'grid') ? 'bg-light text-dark disabled opacity-100 me-2 ' : 'nav-link-light'; ?>" href="<?php echo URL::createLink('shop', 'category', 'index', array('category_id' => $_GET['category_id'], 'page' => $_GET['page'], 'search_term' => $_GET['search_term'], 'sorting_order' => $sortingOrder, 'display_mode' => 'grid')); ?>">
+            <i class="ci-view-grid"></i>
+        </a>
+
+        <a class="btn btn-icon nav-link-style <?php echo ($displayMode == 'list') ? 'bg-light text-dark disabled opacity-100 me-2' : 'nav-link-light'; ?>" href="<?php echo URL::createLink('shop', 'category', 'index', array('category_id' => $_GET['category_id'], 'page' => $_GET['page'], 'search_term' => $_GET['search_term'], 'sorting_order' => $sortingOrder, 'display_mode' => 'list')); ?>"><i class="ci-view-list"></i></a>
+    </div>
+
 </div>

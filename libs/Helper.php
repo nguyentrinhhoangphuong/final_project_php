@@ -238,4 +238,11 @@ class Helper
 		}
 		return $string;
 	}
+
+	public static function showListGrid()
+	{
+		$validDisplayModes = ['list', 'grid']; // Các giá trị hợp lệ cho display_mode
+		$displayMode = isset($_GET['display_mode']) && in_array($_GET['display_mode'], $validDisplayModes) ? $_GET['display_mode'] : 'grid';
+		return $displayMode;
+	}
 }
