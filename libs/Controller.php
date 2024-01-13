@@ -19,7 +19,7 @@ class Controller
 
 	// Pagination
 	protected $_pagination	= array(
-		'totalItemsPerPage'	=> 3,
+		'totalItemsPerPage'	=> 10,
 		'pageRange'			=> 2,
 	);
 

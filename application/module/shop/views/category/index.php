@@ -1,7 +1,7 @@
 <?php
 $xhtml = '';
 // Pagination
-$paginationHTML = $this->pagination->showPaginationShop(URL::createLink('shop', 'category', 'index', array('category_id' => $_GET['category_id'])));
+$paginationHTML = $this->paging->getPaginationHtml(URL::createLink('shop', 'category', 'index', array('category_id' => $_GET['category_id'])));
 
 if (count($this->listBookByCategory)) {
     foreach ($this->listBookByCategory as $item) {

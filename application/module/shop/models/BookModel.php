@@ -4,7 +4,6 @@ class BookModel extends Model
 
 	private $_columns = array('id', 'name', 'description', 'price', 'sale_off', 'picture', 'created', 'created_by', 'modified', 'modified_by', 'status', 'ordering', 'category_id');
 	private $_userInfo;
-	public $page;
 
 	public function __construct()
 	{
@@ -13,7 +12,6 @@ class BookModel extends Model
 		$this->setTable(TBL_BOOK);
 		$userObj 			= Session::get('user');
 		$this->_userInfo 	= $userObj['info'];
-		$this->page = 1;
 	}
 
 	public function listItem($arrParam, $option = null)
@@ -62,27 +60,18 @@ class BookModel extends Model
 		}
 
 		// PAGINATION
-		$pagination = $arrParam['pagination'];
-		$pagination['currentPage'] 	= $this->getPage();
-		$totalItemsPerPage	= $pagination['totalItemsPerPage'];
+		$pagination = $arrParam['paging'];
+		$limit	= $pagination->getLimit();
+		$totalItemsPerPage	= $pagination->getPageRow();
+
 		if ($totalItemsPerPage > 0) {
-			$position	= ($pagination['currentPage'] - 1) * $totalItemsPerPage;
-			$query[]	= "LIMIT $position, $totalItemsPerPage";
+			$query[]	= "LIMIT $limit, $totalItemsPerPage";
 		}
 
 		$query		= implode(" ", $query);
+
 		$result		= $this->fetchAll($query);
 		return $result;
-	}
-
-	private function getPage()
-	{
-		if (isset($_GET['page'])) {
-			$this->page = preg_replace('#[^0-9]#', '', $_GET['page']);
-			$this->page = ($this->page == 0) ? 1 : $this->page; // Đảm bảo giá trị không là 0
-			$this->page = max(1, $this->page); // Đảm bảo giá trị là số nguyên dương
-		}
-		return $this->page;
 	}
 
 	public function infoItem($arrParam, $option = null)
@@ -100,13 +89,24 @@ class BookModel extends Model
 		}
 	}
 
-	public function countItem()
+	public function countItem($arrParam)
 	{
+		$category_id = $arrParam['category_id'];
 		$query[] = "SELECT COUNT(`id`) AS `total`";
 		$query[] = "FROM " . TBL_BOOK;
-		$query[] = "WHERE `id` > 0";
+		if ($category_id == 'all') {
+			$query[] = 'WHERE id > 0';
+		} else if (isset($category_id) && is_numeric($category_id)) {
+			$count = $this->count('SELECT COUNT(*) FROM ' . TBL_BOOK . ' WHERE category_id = ' . $category_id . ' ');
+			if ($count > 0) {
+				$query[] = 'WHERE category_id = ' . $category_id . '';
+			}
+		} else {
+			$query[] = 'WHERE id > 0';
+		}
 		$query		= implode(" ", $query);
 		$result		= $this->fetchRow($query);
+
 		return $result['total'];
 	}
 }

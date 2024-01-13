@@ -16,11 +16,13 @@ class CategoryController extends Controller
 	{
 		$this->_view->_title = 'Category List';
 		$this->setModel("shop", "book");
+		$this->_arrParam['category_id'] = $_GET['category_id'];
 
-		$totalItems = $this->_model->countItem();
-		$configPagination = array('totalItemsPerPage' => 6, 'pageRange' => 5);
-		$this->setPagination($configPagination);
-		$this->_view->pagination = new Pagination($totalItems, $this->_pagination);
+		$totalItems = $this->_model->countItem($this->_arrParam); // Số lượng sách tổng cộng
+		$booksPerPage = 9; // Số sách trên mỗi trang
+		$this->_view->paging = new Paging($totalItems, $booksPerPage);
+		$this->_arrParam['paging'] = $this->_view->paging;
+
 		$this->_view->listBookByCategory = $this->_model->listItem($this->_arrParam, array('task' => 'books-in-cat'));
 		$this->_view->render('category/index');
 	}

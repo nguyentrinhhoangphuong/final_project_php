@@ -8,6 +8,7 @@ class Pagination
 	private $totalPage;						// Tổng số trang
 	private $page;						    // trang hiện tại (showPaginationShop)
 	private $currentPage			= 1;	// Trang hiện tại
+	private $last;
 
 	public function __construct($totalItems, $pagination)
 	{
@@ -33,6 +34,7 @@ class Pagination
 		}
 		return $this->page;
 	}
+
 
 	public function showPagination($link)
 	{
@@ -91,57 +93,6 @@ class Pagination
 			$endPagination	= '<div class="limit">Page ' . $this->currentPage . ' of ' . $this->totalPage . '</div>';
 			$paginationHTML = '<div class="pagination">' . $start . $prev . $listPages . $next . $end . $endPagination . '</div>';
 		}
-		return $paginationHTML;
-	}
-
-	public function showPaginationShop($link)
-	{
-		$paginationHTML = '<nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">';
-
-		// Previous button
-		if ($this->page > 1) {
-			$prevPage = $this->page - 1;
-			$prevLink = $link . '&page=' . $prevPage;
-			$paginationHTML .= '<ul class="pagination"><li class="page-item"><a class="page-link" href="' . $prevLink . '"><i class="ci-arrow-left me-2"></i>Prev</a></li></ul>';
-		} else {
-			$paginationHTML .= '<ul class="pagination"><li class="page-item disabled"><span class="page-link"><i class="ci-arrow-left me-2"></i>Prev</span></li></ul>';
-		}
-
-
-		// Page numbers
-		$paginationHTML .= "<ul class='pagination'>";
-
-		// Render clickable left
-		for ($i = $this->currentPage - $this->pageRange; $i < $this->currentPage; $i++) {
-			if ($i > 0) {
-				$pageLink = $link . '&page=' . $i;
-				$paginationHTML .= "<li class='page-item'><a class='page-link' href='" . $pageLink . "'>$i</a></li>";
-			}
-		}
-		// Render target page number without link
-		$paginationHTML .= "<li class='page-item active'><a class='page-link'>$i</a></li>";
-
-		// Render clickable right
-		for ($i = $this->currentPage + 1; $i < $this->totalPage; $i++) {
-			$pageLink = $link . '&page=' . $i;
-			$paginationHTML .= "<li class='page-item'><a class='page-link' href='" . $pageLink . "'>$i</a></li>";
-			if ($i >= $this->currentPage + $this->pageRange) {
-				break;
-			}
-		}
-		$paginationHTML .= "</ul>";
-
-		// Next button
-		if ($this->page < $this->totalPage) {
-			$nextPage = $this->page + 1;
-			$nextLink = $link . '&page=' . $nextPage;
-			$paginationHTML .= '<ul class="pagination"><li class="page-item"><a class="page-link" href="' . $nextLink . '" aria-label="Next">Next<i class="ci-arrow-right ms-2"></i></a></li></ul>';
-		} else {
-			$paginationHTML .= '<ul class="pagination"><li class="page-item disabled"><span class="page-link">Next<i class="ci-arrow-right ms-2"></i></span></li></ul>';
-		}
-
-		$paginationHTML .= '</nav>';
-
 		return $paginationHTML;
 	}
 }

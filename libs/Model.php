@@ -18,7 +18,8 @@ class Model
         }
         $link = mysqli_connect($params['server'], $params['username'], $params['password']);
         if (!$link) {
-            die('Fail connect: ' . mysqli_errno(@$link));
+            // die('Fail connect: ' . mysqli_errno(@$link));
+            die('Fail to connect to the database: ' . mysqli_connect_error());
         } else {
             $this->connect     = $link;
             $this->database = $params['database'];
@@ -233,6 +234,12 @@ class Model
             return true;
         }
         return false;
+    }
+
+    public function count($query)
+    {
+        $result = $this->fetchRow($query);
+        return $result['COUNT(*)'];
     }
 
     public function createSearchQuery($fields, $searchValue)

@@ -8,8 +8,8 @@ class CategoryModel extends Model
 	public function __construct()
 	{
 		parent::__construct();
-
 		$this->setTable(TBL_CATEGORY);
+
 		$userObj 			= Session::get('user');
 		$this->_userInfo 	= $userObj['info'];
 	}
