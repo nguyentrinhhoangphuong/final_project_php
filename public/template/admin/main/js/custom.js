@@ -121,4 +121,26 @@ $(document).ready(function () {
   $("#filter-bar select[name=filter_category_id]").change(function () {
     $("#adminForm").submit();
   });
+
+  // CHANGE link-ChangeDeliveryStatus
+
+  $('select[name="filter_check"]').on("change", function () {
+    var selectedOption = $(this).val();
+    var updateStatusUrl = $(this)
+      .closest("td")
+      .data("link-changedeliverystatus");
+    var id = $(this).closest("td").data("id");
+    var newUpdateStatusUrl =
+      updateStatusUrl + "&deliverystatus=" + selectedOption;
+    $.ajax({
+      url: newUpdateStatusUrl,
+      method: "POST",
+      success: function (data) {
+        alert(`Đã thay đổi trạng thái đơn hàng có ID = ${id} thành công`);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.error("Lỗi khi thực hiện yêu cầu:", textStatus, errorThrown);
+      },
+    });
+  });
 });

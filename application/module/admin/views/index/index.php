@@ -10,6 +10,7 @@ $arrMenu	= array(
 	array('link' => URL::createLink('admin', 'faq', 'index'), 'name' => 'FAQ manager', 'image' => 'icon-48-preview'),
 	array('link' => URL::createLink('admin', 'slider', 'index'), 'name' => 'Slider manger', 'image' => 'icon-48-banner'),
 	array('link' => URL::createLink('admin', 'blog', 'index'), 'name' => 'Blog manger', 'image' => 'icon-48-newsfeeds'),
+	array('link' => URL::createLink('admin', 'order', 'index'), 'name' => 'Order Manager', 'image' => 'icon-48-newsfeeds'),
 );
 foreach ($arrMenu as $key => $value) {
 	$image	= $imageURL . '/header/' . $value['image'] . '.png';

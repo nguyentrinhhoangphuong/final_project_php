@@ -65,11 +65,18 @@ class Model
             $query         = "INSERT INTO `$this->table`(" . $newQuery['cols'] . ") VALUES (" . $newQuery['vals'] . ")";
             $this->query($query);
         } else {
-            foreach ($data as $value) {
-                $newQuery = $this->createInsertSQL($value);
-                $query = "INSERT INTO `$this->table`(" . $newQuery['cols'] . ") VALUES (" . $newQuery['vals'] . ")";
-                $this->query($query);
+            $cols = implode(", ", array_keys($data[array_key_first($data)]));
+            $vals = [];
+
+            foreach ($data as $record) {
+                $recordValues = implode(", ", array_map(function ($value) {
+                    return "'$value'";
+                }, $record));
+                $vals[] = "($recordValues)";
             }
+
+            $query = "INSERT INTO `$this->table`($cols) VALUES " . implode(", ", $vals);
+            $this->query($query);
         }
         return $this->lastID();
     }

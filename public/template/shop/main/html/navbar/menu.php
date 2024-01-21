@@ -4,6 +4,7 @@ $allBookLink = URL::createLink("shop", "category", "index", array('page' => 1));
 $faqLink = URL::createLink("shop", "faq", "index");
 $aboutLink = URL::createLink("shop", "about", "about");
 $contactLink = URL::createLink("shop", "contact", "about");
+$viewCheckOrderLink = URL::createLink("shop", "order", "viewCheckOrder");
 
 
 
@@ -63,8 +64,8 @@ $bloglink = URL::createLink("shop", 'blog', 'index');
                 <li class="nav-item <?php echo $currentController === 'about' ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?php echo $aboutLink ?>">Thông tin về chúng tôi</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">Kiểm tra đơn hàng</a>
+                <li class="nav-item <?php echo $currentController === 'order' ? 'active' : ''; ?>">
+                    <a class="nav-link" href="<?php echo $viewCheckOrderLink ?>">Kiểm tra đơn hàng</a>
                 </li>
                 <li class="nav-item <?php echo $currentController === 'blog' ? 'active' : ''; ?>">
                     <a class="nav-link" href="<?php echo $bloglink ?>">Blog</a>

@@ -221,6 +221,17 @@ class Helper
 		return $price;
 	}
 
+	public static function cmsPay($item)
+	{
+		$price = 0;
+		if ($item['sale_off'] > 0) {
+			$price = (100 - $item['sale_off']) * $item['price'] / 100;
+		} else {
+			$price = $item['price'];
+		}
+		return $price;
+	}
+
 	public static function cmsTextArea($name, $id, $value, $rows = 4, $cols = 50, $class = '')
 	{
 		$xhtml = '<textarea name="' . $name . '" id="' . $id . '" rows="' . $rows . '" cols="' . $cols . '" class="' . $class . '">' . $value . '</textarea>';
@@ -244,5 +255,15 @@ class Helper
 		$validDisplayModes = ['list', 'grid']; // Các giá trị hợp lệ cho display_mode
 		$displayMode = isset($_GET['display_mode']) && in_array($_GET['display_mode'], $validDisplayModes) ? $_GET['display_mode'] : 'grid';
 		return $displayMode;
+	}
+
+	public static function generateRandomString($length = 6)
+	{
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, strlen($characters) - 1)];
+		}
+		return $randomString;
 	}
 }

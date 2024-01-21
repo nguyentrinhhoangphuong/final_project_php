@@ -1,6 +1,13 @@
+<?php
+$login = URL::createLink('shop', 'index', 'login');
+$token = md5(uniqid(rand(), true));
+$register = URL::createLink('shop', 'index', 'register');
+
+?>
 <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class=" modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
             <div class="modal-header bg-secondary">
                 <ul class="nav nav-tabs card-header-tabs" role="tablist">
                     <li class="nav-item">
@@ -14,10 +21,11 @@
             </div>
 
             <div class="modal-body tab-content py-4">
-                <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+                <form class="needs-validation tab-pane fade show active" action="<?php echo $login ?>" autocomplete="off" method="post" novalidate id="signin-tab">
+                    <input type="hidden" name="form[token]" value="<?php echo $token; ?>" />
                     <div class="mb-3">
                         <label class="form-label" for="si-email">Email</label>
-                        <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required />
+                        <input class="form-control" name="form[email]" type="email" id="si-email" placeholder="johndoe@example.com" required />
                         <div class="invalid-feedback">
                             Vui lòng cung cấp một địa chỉ email hợp lệ.
                         </div>
@@ -25,7 +33,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="si-password">Password</label>
                         <div class="password-toggle">
-                            <input class="form-control" type="password" id="si-password" required />
+                            <input class="form-control" name="form[password]" type="password" id="si-password" required />
                             <label class="password-toggle-btn" aria-label="Show/hide password">
                                 <input class="password-toggle-check" type="checkbox" /><span class="password-toggle-indicator"></span>
                             </label>
@@ -42,16 +50,19 @@
                         Đăng nhập
                     </button>
                 </form>
+
+
                 <!-- ======================================================== -->
-                <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+                <form class="needs-validation tab-pane fade" action="<?php echo $register ?>" autocomplete="off" novalidate id="signup-tab" method="post">
+                    <input type="hidden" name="form[token]" value="<?php echo $token; ?>" />
                     <div class="mb-3">
                         <label class="form-label" for="su-name">Full name</label>
-                        <input class="form-control" type="text" id="su-name" placeholder="John Doe" required />
-                        <div class="invalid-feedback">Please fill in your name.</div>
+                        <input class="form-control" name="form[username]" type="text" id="su-name" placeholder="John Doe" required />
+                        <div class="invalid-feedback">Xin vui lòng điền tên của bạn.</div>
                     </div>
                     <div class="mb-3">
                         <label for="su-email">Email</label>
-                        <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required />
+                        <input class="form-control" name="form[email]" type="email" id="su-email" placeholder="johndoe@example.com" required />
                         <div class="invalid-feedback">
                             Vui lòng cung cấp một địa chỉ email hợp lệ.
                         </div>
@@ -59,9 +70,10 @@
                     <div class="mb-3">
                         <label class="form-label" for="su-password">Password</label>
                         <div class="password-toggle">
-                            <input class="form-control" type="password" id="su-password" required />
+                            <input class="form-control" name="form[password]" type="password" id="su-password" required />
                             <label class="password-toggle-btn" aria-label="Show/hide password">
-                                <input class="password-toggle-check" type="checkbox" /><span class="password-toggle-indicator"></span>
+                                <input class="password-toggle-check" type="checkbox" />
+                                <span class="password-toggle-indicator"></span>
                             </label>
                         </div>
                     </div>

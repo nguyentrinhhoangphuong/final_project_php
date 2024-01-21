@@ -127,16 +127,6 @@ class CategoryModel extends Model
 			if (!empty($arrParam['cid'])) {
 				$ids		= $this->createWhereDeleteSQL($arrParam['cid']);
 
-				// Remove image
-				$query		= "SELECT `id`, `picture` AS `name` FROM `$this->table` WHERE `id` IN ($ids)";
-				$arrImage	= $this->fetchPairs($query);
-				require_once LIBRARY_EXT_PATH . 'Upload.php';
-				$uploadObj	= new Upload();
-				foreach ($arrImage as $value) {
-					$uploadObj->removeFile('category', $value);
-					$uploadObj->removeFile('category', '60x90-' . $value);
-				}
-
 				// Delte from databae
 				$query		= "DELETE FROM `$this->table` WHERE `id` IN ($ids)";
 				$this->query($query);
@@ -163,12 +153,9 @@ class CategoryModel extends Model
 
 	public function saveItem($arrParam, $option = null)
 	{
-		require_once LIBRARY_EXT_PATH . 'Upload.php';
-		require_once LIBRARY_EXT_PATH . 'XML.php';
-		$uploadObj	= new Upload();
 
+		$uploadObj	= new Upload();
 		if ($option['task'] == 'add') {
-			$arrParam['form']['picture']	= $uploadObj->uploadFile($arrParam['form']['picture'], 'category');
 			$arrParam['form']['created']	= date('Y-m-d', time());
 			$arrParam['form']['created_by']	= $this->_userInfo['username'];
 			$data	= array_intersect_key($arrParam['form'], array_flip($this->_columns));
@@ -180,6 +167,8 @@ class CategoryModel extends Model
 
 			return $this->lastID();
 		}
+
+
 		if ($option['task'] == 'edit') {
 			$arrParam['form']['modified']	= date('Y-m-d', time());
 			$arrParam['form']['modified_by'] = $this->_userInfo['username'];

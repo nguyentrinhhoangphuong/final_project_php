@@ -45,10 +45,13 @@ if (isset($this->specialBooks)) {
 		$bookID			= $item['id'];
 		$catID			= $item['category_id'];
 		$price = Helper::cmsSaleOff($item);
+		$pay = Helper::cmsPay($item);
 		$category = $item['category_name'];
 		$picture = Helper::getImage('book', $item['picture']);
 		$link	= URL::createLink("shop", "book", "detail", array('book_id' => $bookID));
 		$linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $catID));
+		$infoBook = ['bookId' => $bookID, 'bookName' => $name, 'picture' => $item['picture'], 'quantity' => 1, 'price' => $pay];
+		$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
 		$xhtml .= "<div class='col-lg-3 col-md-4 col-sm-6 px-2 mb-4'>
 					<div class='card product-card'>
 						<div class='product-card-actions d-flex align-items-center'>
@@ -72,10 +75,12 @@ if (isset($this->specialBooks)) {
 							</div>
 						</div>
 						<div class='card-body card-body-hidden'>
-							<button class='btn btn-primary btn-sm d-block w-100 mb-2' type='button'>
-								<i class='ci-cart fs-sm me-1'></i>Add to Cart
-							</button>
-
+							<button class='btn btn-primary btn-sm d-block w-100 mb-2 addToCartButton' type='button' 
+									data-link-cart='" . $linkAddToCart . "'	
+									data-info-book='" . htmlspecialchars(json_encode($infoBook)) . " '>
+								<i class='ci-cart fs-sm me-1'></i>
+								<span class='text-white'>Thêm Vào Giỏ Hàng</span>
+							</button>									
 						</div>
 					</div>
 					<hr class='d-sm-none' />
@@ -114,10 +119,13 @@ if (isset($this->bookByCategory)) {
 			$name = $book['name'];
 			$bookID = $book['id'];
 			$price = Helper::cmsSaleOff($book);
+			$payBookByCategory = Helper::cmsPay($book);
 			$category = $book['category_name'];
 			$picture = Helper::getImage('book', $book['picture']);
 			$link	= URL::createLink("shop", "book", "detail", array('book_id' => $bookID));
 			$linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => 3));
+			$infoBook = ['bookId' => $bookID, 'bookName' => $name, 'picture' => $book['picture'], 'quantity' => 1, 'price' => $payBookByCategory];
+			$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
 			if ($i <= 8) {
 				$xhtmlBookByCategory .= '<div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
 											<div class="card product-card">
@@ -144,10 +152,13 @@ if (isset($this->bookByCategory)) {
 													</div>
 												</div>
 												<div class="card-body card-body-hidden">
-													<button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button">
-														<i class="ci-cart fs-sm me-1"></i>Add to Cart
-													</button>
-						
+												<button class="btn btn-primary btn-sm d-block w-100 mb-2 addToCartButton" type="button" 
+														data-link-cart="' . $linkAddToCart . '"	
+														data-info-book="' . htmlspecialchars(json_encode($infoBook)) . '
+												">
+													<i class="ci-cart fs-sm me-1"></i>
+													<span class="text-white">Thêm Vào Giỏ Hàng</span>
+												</button>
 												</div>
 											</div>
 											<hr class="d-sm-none" />

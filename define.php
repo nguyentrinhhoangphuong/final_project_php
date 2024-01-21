@@ -42,6 +42,8 @@ define('TBL_FAQ_CATEGORY', 'faq_category');
 define('TBL_FAQ_ITEM', 'faq_item');
 define('TBL_SLIDER', 'sider');
 define('TBL_BLOG', 'blog');
+define('TBL_ORDER', 'order');
+define('TBL_ORDER_DETAIL', 'order_detail');
 
 // ====================== CONFIG ===========================
 define('TIME_LOGIN', 3600);

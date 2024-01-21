@@ -11,17 +11,10 @@ if (file_exists($picturePath) == true) {
 	$pictureFull	= UPLOAD_URL . 'book' . DS . $bookInfo['picture'];
 }
 $description	= substr($bookInfo['description'], 0, 400);
-$priceReal 		= 0;
-$price 		= 0;
-if ($bookInfo['sale_off'] > 0) {
-	// <del class='text-muted fs-lg me-3'>$25.<small>00</small></del><span class='badge bg-danger badge-shadow align-middle mt-n2'>Sale</span>
-	$priceReal	= (100 - $bookInfo['sale_off']) * $bookInfo['price'] / 100;
-	$price	 = ' <span class="red-through">' . number_format($priceReal) . ' <small>đ</small></span> ';
-	$price	.= "<del class='text-muted fs-lg me-3'>" . number_format($bookInfo['price']) . " đ</small></del><span class='badge bg-danger badge-shadow align-middle mt-n2'>Sale</span>";
-} else {
-	$priceReal	= $bookInfo['price'];
-	$price	= ' <span class="red">' . number_format($priceReal) . ' <small>đ</small></span>';
-}
+$price = Helper::cmsSaleOff($bookInfo);
+$payBookByCategory = Helper::cmsPay($bookInfo);
+$infoBook = ['bookId' => $bookInfo['id'], 'bookName' => $name, 'picture' => $bookInfo['picture'], 'quantity' => 1, 'price' => $payBookByCategory];
+$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
 
 
 // BOOK RELATE
@@ -67,6 +60,8 @@ foreach ($bookRelate as $item) {
 							</div>
 						</div>";
 }
+
+
 ?>
 
 
@@ -132,15 +127,15 @@ foreach ($bookRelate as $item) {
 									<?php echo $price ?>
 								</div>
 								<div class="d-flex align-items-center pt-2 pb-4">
-									<select class="form-select me-3" style="width: 5rem">
+									<select class="form-select me-3 selectQuantity" style="width: 5rem" name="selectQuantity">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
 										<option value="4">4</option>
 										<option value="5">5</option>
 									</select>
-									<button class="btn btn-primary btn-shadow d-block w-100" type="button">
-										<i class="ci-cart fs-lg me-2"></i>Add to Cart
+									<button class="btn btn-primary btn-shadow d-block w-100 addToCartButton" type="button" data-link-cart="<?php echo $linkAddToCart ?>" data-info-book="<?php echo htmlspecialchars(json_encode($infoBook)) ?>">
+										<i class="ci-cart fs-lg me-2"></i>Thêm vào giỏ hàng
 									</button>
 								</div>
 								<div class="d-flex mb-4">
@@ -159,34 +154,6 @@ foreach ($bookRelate as $item) {
 
 				<!-- Reviews tab-->
 				<div class="tab-pane fade" id="reviews" role="tabpanel">
-					<div class="d-md-flex justify-content-between align-items-start pb-4 mb-4 border-bottom">
-						<div class="d-flex align-items-center me-md-3">
-							<?php echo $picture ?>
-							<div class="ps-3">
-								<h6 class="fs-base mb-2"><?php echo $name ?></h6>
-								<div class="h4 fw-normal text-accent">
-									<?php echo $price ?>
-								</div>
-							</div>
-						</div>
-						<div class="d-flex align-items-center pt-3">
-							<select class="form-select me-2" style="width: 5rem">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
-							<button class="btn btn-primary btn-shadow me-2" type="button">
-								<i class="ci-cart fs-lg me-sm-2"></i><span class="d-none d-sm-inline">Add to Cart</span>
-							</button>
-							<div class="me-2">
-								<button class="btn btn-secondary btn-icon" type="button" data-bs-toggle="tooltip" title="Add to Wishlist">
-									<i class="ci-heart fs-lg"></i>
-								</button>
-							</div>
-						</div>
-					</div>
 					<div class="row py-4">
 						<!-- Reviews list-->
 						<div class="col-md-7">

@@ -142,6 +142,9 @@ class ContactModel extends Model
             $arrParam['form']['created']    = date('Y-m-d', time());
             $arrParam['form']['created_by']    = $this->_userInfo['username'];
             $data    = array_intersect_key($arrParam['form'], array_flip($this->_columns));
+            echo '<pre style="color:red">';
+            print_r($data);
+            echo '</pre>';
             $this->insert($data);
             Session::set('message', array('class' => 'success', 'content' => 'Dữ liệu được lưu thành công!'));
             return $this->lastID();
