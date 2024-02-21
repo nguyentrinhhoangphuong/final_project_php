@@ -1,7 +1,10 @@
 <?php
 function heading($title, $id)
 {
-	$linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $id));
+	$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category-details-' . $id . '.html');
+	if ($id == 'all') {
+		$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category.html');
+	}
 	$heading = "<div class='d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4'>
 				<h2 class='h3 mb-0 pt-3 me-2'>$title</h2>
 				<div class='pt-3'>
@@ -49,7 +52,7 @@ if (isset($this->specialBooks)) {
 		$category = $item['category_name'];
 		$picture = Helper::getImage('book', $item['picture']);
 		$link = URL::createLink('shop', 'book', 'detail', null, "book-details-" . $bookID . ".html");
-		$linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $catID), 'category-details-' . $catID . '.html');
+		$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category-details-' . $catID . '.html');
 		$infoBook = ['bookId' => $bookID, 'bookName' => $name, 'picture' => $item['picture'], 'quantity' => 1, 'price' => $pay];
 		$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
 		$xhtml .= "<div class='col-lg-3 col-md-4 col-sm-6 px-2 mb-4'>
@@ -110,8 +113,8 @@ if (isset($this->bookByCategory)) {
 			$payBookByCategory = Helper::cmsPay($book);
 			$category = $book['category_name'];
 			$picture = Helper::getImage('book', $book['picture']);
-			$link = URL::createLink('shop', 'book', 'detail', array('book_id' => $bookID), "book-details-" . $bookID . ".html");
-			$linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $book['category_id']), 'category-details-' . $book['category_id'] . '.html');
+			$link = URL::createLink('shop', 'book', 'detail', null, "book-details-" . $bookID . ".html");
+			$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category-details-' . $book['category_id'] . '.html');
 			$infoBook = ['bookId' => $bookID, 'bookName' => $name, 'picture' => $book['picture'], 'quantity' => 1, 'price' => $payBookByCategory];
 			$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
 			if ($i <= 8) {
