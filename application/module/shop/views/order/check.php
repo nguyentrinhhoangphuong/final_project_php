@@ -31,8 +31,9 @@ if (isset($orderStatus)) {
         $navTabs = '<ul class="nav nav-tabs media-tabs nav-justified">';
         foreach ($statusArray as $key => $status) {
             $isActive = ($key == $currentStatus) ? 'active' : '';
+            $isConfirmed = ($key < $currentStatus) ? 'confirmed' : '';
             $navTabs .= '<li class="nav-item">';
-            $navTabs .= '<div class="nav-link ' . $isActive . '">';
+            $navTabs .= '<div class="nav-link ' . $isActive . '' . $isConfirmed . '">';
             $navTabs .= '<div class="d-flex align-items-center">';
             $navTabs .= '<div class="media-tab-media"><i class="ci-' . getStatusIcon($key) . '"></i></div>';
             $navTabs .= '<div class="ps-3">';

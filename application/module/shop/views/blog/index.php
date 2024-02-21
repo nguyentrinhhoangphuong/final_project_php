@@ -1,15 +1,15 @@
 <?php
-$paginationHTML = $this->paging->getPaginationHtml(URL::createLink('shop', 'blog', 'index'));
+$paginationHTML = $this->paging->getPaginationHtml(URL::createLink('shop', 'blog', 'index', null, 'blog.html'));
 $title = $this->_title;
 $xhtmlAllBlogs = '';
 if (isset($this->_blogs)) {
     foreach ($this->_blogs as $item) {
-        $image = Helper::createImage("blog", "", $item['picture'], array("width" => 600, "height" => 350, "alt" => "Post", 'class' => "card-img-top"));
+        $image = Helper::createImage("blog", "", $item['picture'], array("alt" => "Post", 'class' => "card-img-top"));
         $name = $item['name'];
         $content = Helper::shortenString($item['content']);
         $link = URL::createLink("shop", 'blog', 'detail', array('blog_id' => $item['id']));
         $xhtmlAllBlogs .= '<article class="masonry-grid-item">
-                                <a class="blog-entry-thumb" href="' . $link . '">' . $image . '</a>
+                                <a class="blog-entry-thumb" style="height: 15rem;" href="' . $link . '">' . $image . '</a>
                                 <div class="card-body mt-2">
                                     <h2 class="h6 blog-entry-title"><a href="' . $link . '">' . $name . '</a></h2>
                                     <p class="fs-sm">' . $content . '</p>

@@ -1,8 +1,8 @@
 <?php
 // LINK
-$linkCart =  URL::createLink('shop', 'cart', 'cart');
+$linkCart =  URL::createLink('shop', 'cart', 'cart', null, 'carts.html');
 $linkSaveInfoOrder =  URL::createLink('shop', 'order', 'saveInfoOrder');
-$linkReviewOrder =  URL::createLink('shop', 'order', 'review');
+$linkReviewOrder =  URL::createLink('shop', 'order', 'review', null, 'review-oreder.html');
 
 // Var
 $fullName = Session::get('info-order')['fullName'];
@@ -27,7 +27,7 @@ if (count($this->orderSummary) > 0) {
                         </a>
                         <div class="ps-2">
                             <h6 class="widget-product-title"><a href="' . $linkBook . '">' . $name . '</a></h6>
-                            <div class="widget-product-meta"><span class="text-accent me-2">' . $price . '.<small> đ</small></span><span class="text-muted">x ' . $quantity . '</span></div>
+                            <div class="widget-product-meta"><span class="text-accent me-2">' . $price . '<small>đ</small></span><span class="text-muted">x ' . $quantity . '</span></div>
                         </div>
                     </div>';
     }
@@ -58,15 +58,15 @@ if (count($this->orderSummary) > 0) {
             <div class="steps steps-light pt-2 pb-3 mb-5">
                 <a class="step-item active" href="<?php echo $linkCart; ?>">
                     <div class="step-progress"><span class="step-count">1</span></div>
-                    <div class="step-label"><i class="ci-cart"></i>Cart</div>
+                    <div class="step-label"><i class="ci-cart"></i>Giỏ hàng </div>
                 </a>
                 <a class="step-item active current" href="checkout-details.html">
                     <div class="step-progress"><span class="step-count">2</span></div>
-                    <div class="step-label"><i class="ci-user-circle"></i>Details</div>
+                    <div class="step-label"><i class="ci-user-circle"></i>Chi tiết</div>
                 </a>
                 <a class="step-item" href="#">
                     <div class="step-progress"><span class="step-count">3</span></div>
-                    <div class="step-label"><i class="ci-check-circle"></i>Review</div>
+                    <div class="step-label"><i class="ci-check-circle"></i>Đánh giá</div>
                 </a>
             </div>
             <!-- Shipping address-->
@@ -111,7 +111,7 @@ if (count($this->orderSummary) > 0) {
                 </div>
                 <div class="w-50 ps-2">
                     <a class="btn btn-primary d-block w-100 processShipping" data-link-process-shipping="<?php echo $linkSaveInfoOrder; ?>" data-link-review-order="<?php echo $linkReviewOrder; ?>">
-                        <span class="d-none d-sm-inline">Tiến hành vận chuyển</span>
+                        <span class="d-none d-sm-inline">Đặt hàng</span>
                         <i class="ci-arrow-right mt-sm-0 ms-1"></i>
                     </a>
                 </div>
@@ -128,7 +128,7 @@ if (count($this->orderSummary) > 0) {
                     <ul class="list-unstyled fs-sm">
                         <li class="d-flex justify-content-between align-items-center">
                             <span class="me-2">Tổng tiền:</span>
-                            <span class="text-end"><?php echo $total; ?><small> đ</small></span>
+                            <span class="text-end"><?php echo $total; ?><small>đ</small></span>
                         </li>
                     </ul>
                 </div>

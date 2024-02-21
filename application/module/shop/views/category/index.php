@@ -2,12 +2,20 @@
 $xhtml = '';
 // Pagination
 $displayMode = Helper::showListGrid();
-$paginationHTML = $this->paging->getPaginationHtml(URL::createLink('shop', 'category', 'index', array(
-    'category_id' =>  $_GET['category_id'],
-    'sorting_order' => $_GET['sorting_order'],
-    'search_term' => $_GET['search_term'],
-    'display_mode' => $displayMode
-)));
+$categoryId = $_GET['category_id'] == 'all' ? 0 : $_GET['category_id'];
+$paginationHTML = $this->paging->getPaginationHtml(
+    URL::createLink(
+        'shop',
+        'category',
+        'index',
+        array(
+            'sorting_order' => $_GET['sorting_order'],
+            'search_term' => $_GET['search_term'],
+            'display_mode' => $displayMode
+        ),
+        'category-details-' . $categoryId . '.html'
+    )
+);
 
 if (count($this->listBookByCategory)) {
     foreach ($this->listBookByCategory as $item) {
@@ -15,14 +23,20 @@ if (count($this->listBookByCategory)) {
         $bookID = $item['id'];
         $catID = $item['category_id'];
         $category_name = $item['category_name'];
+        $description = Helper::shortenString($item['description']);
         $picture = Helper::createImage("book", '', $item['picture']);
         $price = Helper::cmsSaleOff($item);
-        $link    = URL::createLink("shop", "book", "detail", array('book_id' => $bookID));
-        $linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $catID));
+        $link = URL::createLink("shop", "book", "detail", array('book_id' => $bookID), "book-details-" . $bookID . ".html");
+        $linkAddToCart = URL::createLink("shop", "cart", 'addToCartAction', array('category_id' => $item['id']));
+        $linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $catID), 'category-details-' . $catID . '.html');
+        if ($keyword = $_GET['search_term']) {
+            $name = Helper::highLight($name, $keyword);
+            $category_name = Helper::highLight($category_name, $keyword);
+        }
+
         if ($displayMode == 'grid') {
             $xhtml .= "<div class='col-md-4 col-sm-6 px-2 mb-4'>
             <div class='card product-card'>
-                <button class='btn-wishlist btn-sm' type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist'><i class='ci-heart'></i></button>
                 <a class='card-img-top d-block overflow-hidden' href='$link'>
                     $picture
                 </a>
@@ -30,8 +44,6 @@ if (count($this->listBookByCategory)) {
                     <h3 class='product-title fs-sm'><a href='$link'>$name</a></h3>
                     <div class='d-flex justify-content-between'>
                         $price
-                        <div class='star-rating'><i class='star-rating-icon ci-star-filled active'></i><i class='star-rating-icon ci-star-filled active'></i><i class='star-rating-icon ci-star-filled active'></i><i class='star-rating-icon ci-star-filled active'></i><i class='star-rating-icon ci-star-half active'></i>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -39,9 +51,6 @@ if (count($this->listBookByCategory)) {
         </div>";
         } elseif ($displayMode == 'list') {
             $xhtml .= '<div class="card product-card product-list">
-                        <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist">
-                            <i class="ci-heart"></i>
-                        </button>
                         <div class="d-sm-flex align-items-center pt-4">
                             <a class="product-list-thumb" href="' . $link . '">
                                 ' . $picture . '
@@ -55,15 +64,16 @@ if (count($this->listBookByCategory)) {
                                     <div class="product-price"><span class="text-accent">
                                         ' . $price . '
                                     </div>
-                                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i><i class="star-rating-icon ci-star"></i>
                                 </div>
-                                </div>
-                                <button class="btn btn-primary btn-sm mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                                <div class="pt-2 pb-2" style="width: 29rem;">' . $description . '</div>								
+							</a>
+                                
                             </div>
                         </div>
                     </div>';
         }
     }
+
     echo $xhtml;
     echo $paginationHTML;
 } else {

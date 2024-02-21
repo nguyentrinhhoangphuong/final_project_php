@@ -1,0 +1,19 @@
+.product-card img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  height: 25rem;
+}
+
+.confirmed .media-tab-media {
+  background-color: green;
+  color: white;
+}
+
+.confirmed .media-tab-subtitle {
+  color: greenyellow;
+}
+
+.confirmed h6 {
+  color: green;
+}

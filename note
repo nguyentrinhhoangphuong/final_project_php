@@ -9,14 +9,9 @@ van-hoc-tieu-thuyet-1.html
 - Thay thế khoảng trắng = "-"		Van-Hoc-Tieu-Thuyet
 - Chuyển thành chữ thường			van-hoc-tieu-thuyet
 
-index.php?module=default&controller=book&action=detail&category_id=3&book_id=13
-http://localhost/zend/final_project_php/index.php?module=shop&controller=index&action=index
-http://localhost/zend/final_project_php/index.php?module=admin&controller=index&action=index
+http://localhost/zend/php/final_project_php/index.php?module=shop&controller=index&action=index
+http://localhost/zend/php/final_project_php/index.php?module=admin&controller=index&action=index
 tin-hoc/functional-programming-in-scala-3-144.html
  
-- gan link
-- model
-- giao dien
-- validate
 
- 
+http://localhost/zend/php/final_project_php/index.php?module=shop&controller=index&action=index => index.html 

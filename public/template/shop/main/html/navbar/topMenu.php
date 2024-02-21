@@ -58,7 +58,7 @@
                                 <a href="">' . $name . '</a>
                             </h6>
                             <div class="widget-product-meta">
-                                <span class="text-accent me-2">' . $pay . ' đ</span><span class="text-muted">for ' . $quantity . '</span>
+                                <span class="text-accent me-2">' . $pay . 'đ</span><span class="text-muted">for ' . $quantity . '</span>
                             </div>
                         </div>
                     </div>
@@ -74,16 +74,22 @@
         }
     }
 
-    $linkCart = URL::createLink('shop', 'cart', 'cart');
+    $linkCart = URL::createLink('shop', 'cart', 'cart', null, 'carts.html');
+    $linkSearch =  URL::createLink('shop', 'category', 'index', [
+        // 'category_id' => $_GET['category_id'],
+        'search_term' => $_GET['search_term'],
+        'display_mode' => $_GET['display_mode'],
+        'sorting_order' => $sortingOrder,
+    ], 'category.html');
 
     ?>
  <div class="navbar navbar-expand-lg navbar-light">
      <div class="container">
-         <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="">
+         <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="<?php echo URL::createLink('shop', 'index', 'index', null, 'index.html'); ?>">
              Book Store
          </a>
          <!-- Search-->
-         <div id="search-book-url" data-url="<?php echo URL::createLink('shop', 'category', 'index', array()); ?>"></div>
+         <div id="search-book-url" data-url="<?php echo $linkSearch; ?>"></div>
          <div class="input-group d-none d-lg-flex flex-nowrap mx-4">
              <i class="ci-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
              <input class="form-control rounded-start w-100" id="searchBook" type="text" placeholder="Tìm sách" value="<?php echo $_GET['search_term'] ?? "" ?>" />
@@ -104,7 +110,7 @@
                      <i class="navbar-tool-icon ci-cart"></i>
                  </a>
                  <a class="navbar-tool-text" id="total" href="<?php echo $linkCart; ?>">
-                     <small>Giỏ hàng</small><?php echo number_format($total) ?> đ
+                     <small>Giỏ hàng</small><?php echo number_format($total) ?>đ
                  </a>
                  <!-- Cart dropdown-->
                  <!-- <div class="dropdown-menu dropdown-menu-end" id="cartDropdown">

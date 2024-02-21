@@ -51,9 +51,9 @@
 
 <!-- Footer-->
 <footer class="footer bg-darker pt-5">
-    <div class="container pt-2">
-        <div class="row pb-3">
-            <div class="col-lg-2 col-sm-4">
+    <div class="container">
+        <div class="row pb-2">
+            <div class="col-md-3 col-sm-6 mb-4">
                 <div class="widget widget-links widget-light pb-2 mb-4">
                     <h3 class="widget-title text-light">CHÍNH SÁCH</h3>
                     <ul class="widget-list">
@@ -64,7 +64,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-4">
+            <div class="col-md-3 col-sm-6 mb-4">
                 <div class="widget widget-links widget-light pb-2 mb-4">
                     <h3 class="widget-title text-light">Hãy để chúng tôi giúp bạn</h3>
                     <ul class="widget-list">
@@ -74,31 +74,39 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-4">
+            <div class="col-md-2 col-sm-6 mb-4">
                 <div class="widget widget-links widget-light pb-2 mb-4">
                     <h3 class="widget-title text-light">Theo dõi chúng tôi</h3>
                     <ul class="widget-list">
                         <li class="widget-list-item"><a class="widget-list-link" href="#">Facebook</a></li>
-                        <li class="widget-list-item"><a class="widget-list-link" href="#">X</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">X - Twitter</a></li>
                         <li class="widget-list-item"><a class="widget-list-link" href="#">Instagram</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-8">
+            <div class="col-md-4 col-sm-6 mb-4">
                 <div class="widget pb-2 mb-4">
-                    <h3 class="widget-title text-light pb-1">Download our app</h3>
-                    <div class="d-flex flex-wrap"><a class="btn-market btn-apple border border-light me-3 mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google border border-light mb-2" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
+                    <h3 class="widget-title text-light pb-1">Tải ứng dụng</h3>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn-market btn-apple border border-light" style="margin-right: 5px;" href="#" role="button">
+                            <span class="btn-market-title">App Store</span>
+                        </a>
+                        <a class="btn-market btn-google border border-light" href="#" role="button">
+                            <span class="btn-market-title">Google Play</span>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
         <hr class="hr-light mt-md-2 mb-3">
         <div class="d-md-flex justify-content-between pt-4 pb-1">
-            <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+            <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© Mọi quyền được bảo lưu. Được thực hiện bởi học viên <a class="text-light" href="https://zendvn.com/" target="_blank" rel="noopener">zendvn</a></div>
             <div class="widget widget-links widget-light pb-4">
                 <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
-                    <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Privacy Policy</a></li>
-                    <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Terms &amp; Conditions</a></li>
-                    <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Cookies Policy</a></li>
+                    <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Chính sách bảo mật</a></li>
+                    <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Điều khoản &amp; Điều kiện</a></li>
+                    <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Chính sách cookie</a></li>
                 </ul>
             </div>
         </div>

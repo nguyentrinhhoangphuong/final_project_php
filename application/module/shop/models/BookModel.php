@@ -20,7 +20,7 @@ class BookModel extends Model
 			$catID		= $arrParam['category_id'];
 			$searchTerm = isset($arrParam['search_term']) ? $arrParam['search_term'] : '';
 
-			$query[]	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`category_id`, `b`.`price`, `b`.`sale_off`, `c`.`name` AS `category_name`";
+			$query[]	= "SELECT `b`.`id`, `b`.`name`, `b`.`picture`, `b`.`category_id`,`b`.`description`, `b`.`price`, `b`.`sale_off`, `c`.`name` AS `category_name`";
 			$query[]	= "FROM " . TBL_BOOK . " as b ";
 			$query[]	= "JOIN " . TBL_CATEGORY . " as c on c.id = b.category_id";
 			if (!empty($searchTerm)) {

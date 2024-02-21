@@ -162,7 +162,8 @@ class Helper
 		$class	= !empty($attribute['class']) ? $attribute['class'] : '';
 		$width	= !empty($attribute['width']) ? $attribute['width'] : '';
 		$height	= !empty($attribute['height']) ? $attribute['height'] : '';
-		$strAttribute	= "class='$class' width='$width' height='$height'";
+		$style	= !empty($attribute['style']) ? $attribute['style'] : '';
+		$strAttribute	= "class='$class'  style='$style' width='$width' height='$height'";
 
 		$picturePath	= UPLOAD_PATH . $folder . DS . $prefix . $pictureName;
 		if (file_exists($picturePath) == true) {
@@ -178,7 +179,7 @@ class Helper
 	{
 		$picturePath	= UPLOAD_PATH . $folder . DS  . $pictureName;
 		if (file_exists($picturePath) == true) {
-			$picture	= '<img src="' . UPLOAD_URL . $folder . DS  . $pictureName . '">';
+			$picture	= '<img style="" src="' . UPLOAD_URL . $folder . DS  . $pictureName . '">';
 		} else {
 			$picture	= '<img src="' . UPLOAD_URL . $folder . DS  . 'default.jpg' . '">';
 		}
@@ -216,7 +217,7 @@ class Helper
 			$price = "<span class='text-accent'>" . number_format($priceSaleOff) . "<small>đ</small></span>        ";
 			$price .= "<del class='text-muted fs-lg me-3'>" . number_format($item['price']) . "<small>đ</small></small></del>";
 		} else {
-			$price = "<span class='text-accent'>" . number_format($item['price']) . "</span>";
+			$price = "<span class='text-accent'>" . number_format($item['price']) . "<small>đ</small></span>";
 		}
 		return $price;
 	}
@@ -265,5 +266,11 @@ class Helper
 			$randomString .= $characters[rand(0, strlen($characters) - 1)];
 		}
 		return $randomString;
+	}
+
+	public static function highLight($text, $keyword)
+	{
+		$highlightedText = preg_replace('/' . preg_quote($keyword, '/') . '/i', '<span style="background-color: yellow;">$0</span>', $text);
+		return $highlightedText;
 	}
 }

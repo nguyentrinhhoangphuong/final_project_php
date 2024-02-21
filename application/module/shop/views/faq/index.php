@@ -1,5 +1,5 @@
 <?php
-$xhtml .= "<div class='container pt-5'>";
+$xhtml .= "<div class='container p-5'>";
 $xhtml .= "<h3 class='text-center'>Câu hỏi thường gặp</h3>";
 $i = 1;
 foreach ($this->faqs as $item) {

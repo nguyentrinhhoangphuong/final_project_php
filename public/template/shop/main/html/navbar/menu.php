@@ -1,22 +1,21 @@
 <?php
-$homeLink = URL::createLink("shop", "index", "index");
+$homeLink = URL::createLink("shop", "index", "index", null, "index.html");
 $allBookLink = URL::createLink("shop", "category", "index", array('page' => 1));
-$faqLink = URL::createLink("shop", "faq", "index");
-$aboutLink = URL::createLink("shop", "about", "about");
-$contactLink = URL::createLink("shop", "contact", "about");
-$viewCheckOrderLink = URL::createLink("shop", "order", "viewCheckOrder");
-
-
+$faqLink = URL::createLink("shop", "faq", "index", null, 'faq.html');
+$aboutLink = URL::createLink("shop", "about", "about", null, 'about.html');
+$contactLink = URL::createLink("shop", "contact", "about", null, 'contact.html');
+$viewCheckOrderLink = URL::createLink("shop", "order", "viewCheckOrder", null, 'check-order.html');
+$bloglink = URL::createLink("shop", 'blog', 'index', null, 'blog.html');
 
 $currentController = isset($_GET['controller']) ? $_GET['controller'] : 'index';
 
-$allBooks = URL::createLink("shop", 'category', "index");
+$allBooks = URL::createLink("shop", 'category', "index", null, 'category.html');
 $model = new Model();
 $query = "SELECT * FROM " . TBL_CATEGORY;
 $results = $model->fetchAll($query);
 $xhtmlDropdown = "";
 foreach ($results as $item) {
-    $link = URL::createParams('shop', 'category', 'index', array('category_id' => $item['id']));
+    $link = URL::createLink('shop', 'category', 'index', array('category_id' => $item['id']), 'category-details-' . $item['id'] . '.html');
     $name = $item['name'];
     $xhtmlDropdown .= "<li>
                 <a class='dropdown-item' href='" . $link . "'>
@@ -28,7 +27,7 @@ foreach ($results as $item) {
 }
 
 
-$bloglink = URL::createLink("shop", 'blog', 'index');
+
 
 ?>
 <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">

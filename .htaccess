@@ -4,12 +4,23 @@ RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
 
-RewriteRule		index.html 			index.php?module=default&controller=index&action=index
-RewriteRule		category.html 		index.php?module=default&controller=category&action=index
-RewriteRule		register.html 		index.php?module=default&controller=index&action=register
-RewriteRule		login.html 			index.php?module=default&controller=index&action=login
-RewriteRule		cart.html 			index.php?module=default&controller=user&action=cart
-RewriteRule		my-account.html 	index.php?module=default&controller=user&action=index
-RewriteRule		history.html 		index.php?module=default&controller=user&action=history
-RewriteRule		([A-Za-z0-9_-]+)-([0-9]+)\.html 		index.php?module=default&controller=book&action=list&category_id=$2
-RewriteRule		([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)-([0-9]+)-([0-9]+)\.html 		index.php?module=default&controller=book&action=detail&category_id=$3&book_id=$4
+RewriteRule		index.html 			index.php?module=shop&controller=index&action=index
+RewriteRule		category.html 		index.php?module=shop&controller=category&action=index [QSA,L]
+RewriteRule		register.html 		index.php?module=shop&controller=index&action=register
+RewriteRule		login.html 			index.php?module=shop&controller=index&action=login
+RewriteRule		cart.html 			index.php?module=shop&controller=user&action=cart
+RewriteRule		my-account.html 	index.php?module=shop&controller=user&action=index
+RewriteRule		blog.html 		    index.php?module=shop&controller=blog&action=index
+RewriteRule		faq.html 		    index.php?module=shop&controller=faq&action=index
+RewriteRule		about.html 		    index.php?module=shop&controller=about&action=about
+RewriteRule		contact.html 	    index.php?module=shop&controller=contact&action=about
+RewriteRule		check-order.html    index.php?module=shop&controller=order&action=viewCheckOrder
+RewriteRule		cart.html 		    index.php?module=shop&controller=cart&action=cart
+
+RewriteRule		book-details-([0-9]+)\.html 		    index.php?module=shop&controller=book&action=detail&book_id=$1
+RewriteRule		category-details-([0-9]+)\.html 		index.php?module=shop&controller=category&action=index&category_id=$1 [QSA,L]
+RewriteRule		carts.html 		                        index.php?module=shop&controller=cart&action=cart
+RewriteRule		checkout.html 		                    index.php?module=shop&controller=order&action=index
+RewriteRule		review-oreder.html                      index.php?module=shop&controller=order&action=review
+RewriteRule		complete-order.html                     index.php?module=shop&controller=order&action=complete
+

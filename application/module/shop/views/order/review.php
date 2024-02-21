@@ -1,8 +1,8 @@
 <?php
 // link
-$linkAddress = URL::createLink('shop', 'order', 'index');
-$linkEdit = URL::createLink('shop', 'cart', 'cart');
-$linkCompleteOrder = URL::createLink('shop', 'order', 'complete');
+$linkAddress = URL::createLink('shop', 'order', 'index', null, 'checkout.html');
+$linkEdit = URL::createLink('shop', 'cart', 'cart', null, 'carts.html');
+$linkCompleteOrder = URL::createLink('shop', 'order', 'complete', null, 'complete-order.html');
 
 //var
 $title = $this->_title;
@@ -20,7 +20,7 @@ foreach ($this->orderSummary as $item) {
                     </a>
                         <div class="pt-2">
                             <h3 class="product-title fs-base mb-2"><a href="shop-single-v1.html">' . $name . '</a></h3>
-                            <div class="fs-lg text-accent pt-2">' . $price . '<small> đ</small></div>
+                            <div class="fs-lg text-accent pt-2">' . $price . '<small>đ</small></div>
                         </div>
                     </div>
                     <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-end" style="max-width: 9rem;">
@@ -54,15 +54,15 @@ foreach ($this->orderSummary as $item) {
             <div class="steps steps-light pt-2 pb-3 mb-5">
                 <a class="step-item active" href="<?php echo $linkCart; ?>">
                     <div class="step-progress"><span class="step-count">1</span></div>
-                    <div class="step-label"><i class="ci-cart"></i>Cart</div>
+                    <div class="step-label"><i class="ci-cart"></i>Giỏ hàng</div>
                 </a>
                 <a class="step-item active" href="<?php echo $linkAddress; ?>">
                     <div class="step-progress"><span class="step-count">2</span></div>
-                    <div class="step-label"><i class="ci-user-circle"></i>Details</div>
+                    <div class="step-label"><i class="ci-user-circle"></i>Chi tiết</div>
                 </a>
                 <a class="step-item active current" href="#">
                     <div class="step-progress"><span class="step-count">3</span></div>
-                    <div class="step-label"><i class="ci-check-circle"></i>Review</div>
+                    <div class="step-label"><i class="ci-check-circle"></i>Đánh giá</div>
                 </a>
             </div>
             <!-- Order details-->
@@ -98,7 +98,7 @@ foreach ($this->orderSummary as $item) {
             <div class="bg-white rounded-3 shadow-lg p-4 ms-lg-auto">
                 <div class="py-2 px-xl-2">
                     <h2 class="h6 text-center mb-4">Tổng tiền</h2>
-                    <h3 class="fw-normal text-center my-4"><?php echo $toal; ?><small> đ</small></h3>
+                    <h3 class="fw-normal text-center my-4"><?php echo $toal; ?><small>đ</small></h3>
                 </div>
             </div>
         </aside>

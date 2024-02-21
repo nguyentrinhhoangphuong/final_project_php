@@ -109,4 +109,51 @@ class Paging
         }
         return $paginationHTML;
     }
+
+    // public function getPaginationHtml($url)
+    // {
+    //     if ($this->getLast() > 1) {
+    //         $paginationHTML = '<nav class="d-flex justify-content-center pt-2" aria-label="Page navigation">';
+    //         $paginationHTML .= '<ul class="pagination">';
+    //         if ($this->getPageNum() > 1) {
+    //             $previous = $this->getPageNum() - 1;
+    //             $prevLink = $url . '&page=' . $previous . '.html';
+    //             $paginationHTML .= '
+    //                         <li class="page-item"><a class="page-link" href="' . $prevLink . '"><i class="ci-arrow-left me-2"></i>Prev</a></li>
+    //                     ';
+    //             for ($i = $this->getPageNum() - 4; $i < $this->getPageNum(); $i++) {
+    //                 if ($i > 0) {
+    //                     $numLinkLeft = $url . '&page=' . $i . '.html';
+    //                     $paginationHTML .= '<li class="page-item d-none d-sm-block"><a class="page-link" href="' . $numLinkLeft . '">' . $i . '</a></li>';
+    //                 }
+    //             }
+    //         } else {
+    //             $paginationHTML .= '
+    //                         <li class="page-item disabled"><span class="page-link"><i class="ci-arrow-left me-2"></i>Prev</span></li>
+    //                     ';
+    //         }
+
+    //         $paginationHTML .= '<li class="page-item active" aria-current="page"><span class="page-link">' . $this->getPageNum() . '<span class="visually-hidden">(current)</span></span></li>';
+
+    //         for ($i = $this->getPageNum() + 1; $i <= $this->getLast(); $i++) {
+    //             $numLinkRight = $url . '&page=' . $i . '.html';
+    //             $paginationHTML .= '<li class="page-item d-none d-sm-block"><a class="page-link" href="' . $numLinkRight . '">' . $i . '</a></li>';
+    //             if ($i >= $this->getPageNum() + 4) {
+    //                 break;
+    //             }
+    //         }
+
+    //         if ($this->getPageNum() != $this->getLast()) {
+    //             $next = $this->getPageNum() + 1;
+    //             $nextLink = $url . '&page=' . $next . '.html';
+    //             $paginationHTML .= '<li class="page-item"><a class="page-link" href="' . $nextLink . '" aria-label="Next">Next<i class="ci-arrow-right ms-2"></i></a></li>';
+    //         } else {
+    //             $paginationHTML .= '<li class="page-item disabled"><span class="page-link" aria-label="Next">Next<i class="ci-arrow-right ms-2"></i></span></li>';
+    //         }
+
+    //         $paginationHTML .= '</ul>';
+    //         $paginationHTML .= '</nav>';
+    //     }
+    //     return $paginationHTML;
+    // }
 }

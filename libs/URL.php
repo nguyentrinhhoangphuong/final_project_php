@@ -2,22 +2,48 @@
 class URL
 {
 
+	// public static function createLink($module, $controller, $action, $params = null, $router = null)
+	// {
+	// 	$linkParams = '';
+	// 	if (!empty($router)) return ROOT_URL . $router;
+	// 	if (!empty($params)) {
+	// 		foreach ($params as $key => $value) {
+	// 			$linkParams .= "&$key=$value";
+	// 		}
+	// 	}
+	// 	$url = ROOT_URL . 'index.php?module=' . $module . '&controller=' . $controller . '&action=' . $action . $linkParams;
+	// 	return $url;
+	// }
+
 	public static function createLink($module, $controller, $action, $params = null, $router = null)
 	{
 		$linkParams = '';
-		if (!empty($router)) return ROOT_URL . $router;
 		if (!empty($params)) {
+			$first = true;
 			foreach ($params as $key => $value) {
-				$linkParams .= "&$key=$value";
+				if ($first) {
+					$linkParams .= "?$key=$value";
+					$first = false;
+				} else {
+					$linkParams .= "&$key=$value";
+				}
 			}
 		}
-		$url = ROOT_URL . 'index.php?module=' . $module . '&controller=' . $controller . '&action=' . $action . $linkParams;
-		return $url;
+		if (!empty($router)) {
+			return ROOT_URL . $router . $linkParams;
+		} else {
+			return ROOT_URL . 'index.php?module=' . $module . '&controller=' . $controller . '&action=' . $action . $linkParams;
+		}
 	}
+
+
+
+
 
 	public static function createParams($module, $controller, $action, $params = null, $router = null)
 	{
 		$linkParams = '';
+		if (!empty($router)) return ROOT_URL . $router;
 		if (!empty($params)) {
 			foreach ($params as $key => $value) {
 				$linkParams .= "&$key=$value";

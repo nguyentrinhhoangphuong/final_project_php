@@ -1,9 +1,9 @@
 <?php
 // LINK
-$linkAllBooks = URL::createLink('shop', 'category', 'index');
+$linkAllBooks = URL::createLink('shop', 'category', 'index', null, 'category.html');
 $linkUpdateCart = URL::createLink('shop', 'cart', 'updateCart');
 $linkDeleteItem = URL::createLink('shop', 'cart', 'deleteItem');
-$linkCheckout = URL::createLink('shop', 'order', 'index');
+$linkCheckout = URL::createLink('shop', 'order', 'index', null, 'checkout.html');
 
 // Initialize an empty array if $this->books is not set or is empty
 $this->books = isset($this->books) ? $this->books : array();
@@ -24,7 +24,7 @@ foreach ($this->books as $item) {
                                 </a>
                                 <div class="pt-2">
                                     <h3 class="product-title fs-base mb-2"><a href="shop-single-v1.html">' . $name . '</a></h3>
-                                    <div class="fs-lg text-accent pt-2">' . $price . '<small> đ</small></div>
+                                    <div class="fs-lg text-accent pt-2">' . $price . '<small>đ</small></div>
                                 </div>
                             </div>
                             <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
@@ -107,7 +107,7 @@ if (!empty($this->books)) {
                     <div class="py-2 px-xl-2">
                         <div class="text-center mb-4 pb-3 border-bottom">
                             <h2 class="h6 mb-3 pb-1">Tổng tiền</h2>
-                            <h3 class="fw-normal"><?php echo $total; ?><small> đ</small></h3>
+                            <h3 class="fw-normal"><?php echo $total; ?><small>đ</small></h3>
                         </div>
 
                         <a class="btn btn-primary btn-shadow d-block w-100 mt-4" href="<?php echo $linkCheckout; ?>">

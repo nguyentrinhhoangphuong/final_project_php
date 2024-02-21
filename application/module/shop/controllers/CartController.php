@@ -18,6 +18,10 @@ class CartController extends Controller
         $this->_view->render('cart/index');
     }
 
+    public function addToWistList()
+    {
+    }
+
     public function addToCartAction()
     {
         // Thay đổi này để nhận dữ liệu từ phía client
