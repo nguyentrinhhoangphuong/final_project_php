@@ -164,7 +164,7 @@ if (isset($this->blog)) {
 	foreach ($this->blog as $item) {
 		$name = $item['name'];
 		$created_by = $item['created_by'];
-		$link = URL::createLink("shop", 'blog', 'detail', array('blog_id' => $item['id']));
+		$link = URL::createLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
 		$image = Helper::createImage('blog', '', $item['picture'], array('class' => 'rounded-3', 'alt' => 'Blog image', 'width' => 390, 'height' => 240));
 		$xhtmlBlog .= '<article>
 		 							<a class="blog-entry-thumb mb-3" href="' . $link . '">

@@ -10,7 +10,7 @@ RewriteRule		register.html 		index.php?module=shop&controller=index&action=regis
 RewriteRule		login.html 			index.php?module=shop&controller=index&action=login
 RewriteRule		cart.html 			index.php?module=shop&controller=user&action=cart
 RewriteRule		my-account.html 	index.php?module=shop&controller=user&action=index
-RewriteRule		blog.html 		    index.php?module=shop&controller=blog&action=index
+RewriteRule		blog.html 		    index.php?module=shop&controller=blog&action=index  [QSA,L]
 RewriteRule		faq.html 		    index.php?module=shop&controller=faq&action=index
 RewriteRule		about.html 		    index.php?module=shop&controller=about&action=about
 RewriteRule		contact.html 	    index.php?module=shop&controller=contact&action=about
@@ -23,4 +23,6 @@ RewriteRule		carts.html 		                        index.php?module=shop&controll
 RewriteRule		checkout.html 		                    index.php?module=shop&controller=order&action=index
 RewriteRule		review-oreder.html                      index.php?module=shop&controller=order&action=review
 RewriteRule		complete-order.html                     index.php?module=shop&controller=order&action=complete
+
+RewriteRule		blog-details-([0-9]+)\.html	             index.php?module=shop&controller=blog&action=detail&blog_id=$1 [QSA,L]
 

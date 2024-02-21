@@ -1,8 +1,13 @@
 <?php
 $xhtml = '';
-// Pagination
 $displayMode = Helper::showListGrid();
-$categoryId = $_GET['category_id'] == 'all' ? 0 : $_GET['category_id'];
+if ($_GET['category_id'] == 'all' || !isset($_GET['category_id'])) {
+    $categoryId = 0;
+} else {
+    $categoryId = $_GET['category_id'];
+}
+
+// Pagination
 $paginationHTML = $this->paging->getPaginationHtml(
     URL::createLink(
         'shop',

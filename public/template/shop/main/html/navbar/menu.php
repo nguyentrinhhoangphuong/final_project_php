@@ -15,7 +15,7 @@ $query = "SELECT * FROM " . TBL_CATEGORY;
 $results = $model->fetchAll($query);
 $xhtmlDropdown = "";
 foreach ($results as $item) {
-    $link = URL::createLink('shop', 'category', 'index', array('category_id' => $item['id']), 'category-details-' . $item['id'] . '.html');
+    $link = URL::createLink('shop', 'category', 'index', null, 'category-details-' . $item['id'] . '.html');
     $name = $item['name'];
     $xhtmlDropdown .= "<li>
                 <a class='dropdown-item' href='" . $link . "'>

@@ -1,8 +1,8 @@
 <?php
 if (isset($this->_blogInfo)) {
-    $name = $this->_blogInfo['name'];
+    $name_blogInfo = $this->_blogInfo['name'];
     $content = $this->_blogInfo['content'];
-    $image = Helper::createImage("blog", '', $this->_blogInfo['picture'], array('width' => 285, 'height' => 190));
+    $image_blogInfo = Helper::createImage("blog", '', $this->_blogInfo['picture'], array('width' => 285, 'height' => 190));
 }
 
 $xhtmlBlogRelate = '';
@@ -11,7 +11,7 @@ if (isset($this->_blogRelate)) {;
         $name = $item['name'];
         $created_by = $item['created_by'];
         $image = Helper::createImage("blog", '', $item['picture'], array('width' => 390, 'height' => 228, "alt" => "Post"));
-        $link = URL::createLink("shop", 'blog', 'detail', array('blog_id' => $item['id']));
+        $link = URL::createLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
         $xhtmlBlogRelate .= '<article>
                                 <a class="blog-entry-thumb mb-3" href="' . $link . '">
                                     ' . $image . '
@@ -31,15 +31,15 @@ if (isset($this->_blogRelate)) {;
         <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb flex-lg-nowrap justify-content-center justify-content-lg-start">
-                    <li class="breadcrumb-item"><a class="text-nowrap" href="index-2.html"><i class="ci-home"></i>Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-nowrap" href="#"><i class="ci-home"></i>Home</a></li>
                     <li class="breadcrumb-item text-nowrap"><a href="#">Blog</a>
                     </li>
-                    <li class="breadcrumb-item text-nowrap active" aria-current="page"><?php echo $name; ?></li>
+                    <li class="breadcrumb-item text-nowrap active" aria-current="page"><?php echo $name_blogInfo; ?></li>
                 </ol>
             </nav>
         </div>
         <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-            <h1 class="h3 mb-0"><?php echo $name; ?></h1>
+            <h1 class="h3 mb-0"><?php echo $name_blogInfo; ?></h1>
         </div>
     </div>
 </div>
@@ -49,13 +49,16 @@ if (isset($this->_blogRelate)) {;
             <p><?php echo $content ?></p>
         </div>
         <div class="col-lg-3">
-            <?php echo $image ?>
+            <?php echo $image_blogInfo ?>
         </div>
         <div class="d-flex flex-wrap justify-content-between pt-2 pb-4 mb-1">
             <div class="mt-3"><span class="d-inline-block align-middle text-muted fs-sm me-3 mt-1 mb-2">Share post:</span><a class="btn-social bs-facebook me-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-twitter me-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-pinterest me-2 mb-2" href="#"><i class="ci-pinterest"></i></a></div>
         </div>
     </div>
 </div>
+
+
+
 <!-- Related posts-->
 <div class="bg-secondary py-5">
     <div class="container py-3">
