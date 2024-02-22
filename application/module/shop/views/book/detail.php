@@ -2,7 +2,7 @@
 // BOOK INFO
 $bookInfo	= $this->bookInfo;
 $categoryName = $bookInfo['category_name'];
-$linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $bookInfo['category_id']));
+$linkCategory = URL::createShopLink('shop', 'category', 'index', array('category_id' => $bookInfo['category_id']));
 $name = $bookInfo['name'];
 $picture 		= Helper::createImage('book', '', $bookInfo['picture'], ['width' => 350]);
 $picturePath	= UPLOAD_PATH . 'book' . DS . '98x150-' . $bookInfo['picture'];
@@ -14,7 +14,7 @@ $description	= substr($bookInfo['description'], 0, 400);
 $price = Helper::cmsSaleOff($bookInfo);
 $payBookByCategory = Helper::cmsPay($bookInfo);
 $infoBook = ['bookId' => $bookInfo['id'], 'bookName' => $name, 'picture' => $bookInfo['picture'], 'quantity' => 1, 'price' => $payBookByCategory];
-$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
+$linkAddToCart = URL::createShopLink('shop', 'cart', 'addToCart');
 
 
 // BOOK RELATE
@@ -34,7 +34,7 @@ foreach ($bookRelate as $item) {
 	$bookRelatePicture = Helper::createImage("book", '', $item['picture']);
 	$bookRelateCategoryName = $item['category_name'];
 	$bookRelateCategoryId = $item['category_id'];
-	$bookRelateLink = URL::createLink("shop", "book", "detail", array('book_id' => $bookRelateId));
+	$bookRelateLink = URL::createShopLink('shop', 'book', 'detail', null, "book-details-" . $bookRelateId . ".html");
 	$xhtmlBookRelate .= "<div>
 							<div class='card product-card card-static'>
 								<a class='card-img-top d-block overflow-hidden' href='$bookRelateLink'>

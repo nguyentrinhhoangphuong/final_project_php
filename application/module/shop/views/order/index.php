@@ -1,8 +1,8 @@
 <?php
 // LINK
-$linkCart =  URL::createLink('shop', 'cart', 'cart', null, 'carts.html');
-$linkSaveInfoOrder =  URL::createLink('shop', 'order', 'saveInfoOrder');
-$linkReviewOrder =  URL::createLink('shop', 'order', 'review', null, 'review-oreder.html');
+$linkCart =  URL::createShopLink('shop', 'cart', 'cart', null, 'carts.html');
+$linkSaveInfoOrder =  URL::createShopLink('shop', 'order', 'saveInfoOrder');
+$linkReviewOrder =  URL::createShopLink('shop', 'order', 'review', null, 'review-oreder.html');
 
 // Var
 $fullName = Session::get('info-order')['fullName'];
@@ -16,7 +16,7 @@ $total = number_format($this->total);
 $xhtmlOrder = '';
 if (count($this->orderSummary) > 0) {
     foreach ($this->orderSummary as $item) {
-        $linkBook = URL::createLink('shop', 'book', 'detail', array('book_id' => $item['bookId']));
+        $linkBook = URL::createShopLink('shop', 'book', 'detail', array('book_id' => $item['bookId']));
         $image = Helper::createImage('book', '', $item['picture'], array('width' => 64, 'alt' => 'Product'));
         $name = $item['name'];
         $quantity = $item['quantity'];

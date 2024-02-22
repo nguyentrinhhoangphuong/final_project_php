@@ -9,7 +9,7 @@ if ($_GET['category_id'] == 'all' || !isset($_GET['category_id'])) {
 
 // Pagination
 $paginationHTML = $this->paging->getPaginationHtml(
-    URL::createLink(
+    URL::createShopLink(
         'shop',
         'category',
         'index',
@@ -31,9 +31,9 @@ if (count($this->listBookByCategory)) {
         $description = Helper::shortenString($item['description']);
         $picture = Helper::createImage("book", '', $item['picture']);
         $price = Helper::cmsSaleOff($item);
-        $link = URL::createLink("shop", "book", "detail", array('book_id' => $bookID), "book-details-" . $bookID . ".html");
-        $linkAddToCart = URL::createLink("shop", "cart", 'addToCartAction', array('category_id' => $item['id']));
-        $linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $catID), 'category-details-' . $catID . '.html');
+        $link = URL::createShopLink("shop", "book", "detail", null, "book-details-" . $bookID . ".html");
+        $linkAddToCart = URL::createShopLink("shop", "cart", 'addToCartAction', array('category_id' => $item['id']));
+        $linkCategory = URL::createShopLink('shop', 'category', 'index', array('category_id' => $catID), 'category-details-' . $catID . '.html');
         if ($keyword = $_GET['search_term']) {
             $name = Helper::highLight($name, $keyword);
             $category_name = Helper::highLight($category_name, $keyword);

@@ -28,7 +28,7 @@ foreach ($result as $item) {
     if ($item['id'] == 'all') {
         $router = 'category.html';
     }
-    $linkCategory = URL::createLink('shop', 'category', 'index', array(
+    $linkCategory = URL::createShopLink('shop', 'category', 'index', array(
         'category_id' => $item['id'],
         'display_mode' => $displayMode,
     ), $router);
@@ -58,7 +58,7 @@ foreach ($resultSpecialBook as $item) {
     $title = $item['name'];
     $bookID = $item['id'];
     $picture = Helper::createImage('book', '', $item['picture'], array('class' => 'rounded-start'));
-    $link = URL::createLink("shop", "book", "detail", array('book_id' => $bookID), 'book-details-' . $bookID . '.html');
+    $link = URL::createShopLink("shop", "book", "detail", array('book_id' => $bookID), 'book-details-' . $bookID . '.html');
     $xhtmlSpecialBook .= "<a href='$link' style='color: #4b566b'>
                             <div class='card' style='max-width: 540px;'>
                                 <div class='row g-0'>

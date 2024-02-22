@@ -1,15 +1,15 @@
 <?php
 // link
-$linkAddress = URL::createLink('shop', 'order', 'index', null, 'checkout.html');
-$linkEdit = URL::createLink('shop', 'cart', 'cart', null, 'carts.html');
-$linkCompleteOrder = URL::createLink('shop', 'order', 'complete', null, 'complete-order.html');
+$linkAddress = URL::createShopLink('shop', 'order', 'index', null, 'checkout.html');
+$linkEdit = URL::createShopLink('shop', 'cart', 'cart', null, 'carts.html');
+$linkCompleteOrder = URL::createShopLink('shop', 'order', 'complete', null, 'complete-order.html');
 
 //var
 $title = $this->_title;
 $toal = number_format($this->total);
 $xhtmlOrder = '';
 foreach ($this->orderSummary as $item) {
-    $linkBook = URL::createLink('shop', 'book', 'detail', array('book_id' => $item['bookId']));
+    $linkBook = URL::createShopLink('shop', 'book', 'detail', array('book_id' => $item['bookId']));
     $image = Helper::createImage('book', '', $item['picture'], array('width' => 100, 'alt' => 'Product'));
     $name = $item['name'];
     $quantity = $item['quantity'];

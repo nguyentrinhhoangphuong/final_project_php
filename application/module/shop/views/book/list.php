@@ -9,7 +9,7 @@ if (!empty($this->Items)) {
 		$bookNameURL	= URL::filterURL($name);
 		$catNameURL		= URL::filterURL($this->categoryName);
 
-		$link = URL::createLink('shop', 'book', 'detail', array('book_id' => $bookID), "book-details" . $bookID . ".html");
+		$link = URL::createShopLink('shop', 'book', 'detail', array('book_id' => $bookID), "book-details" . $bookID . ".html");
 		$description	= substr($value['description'], 0, 200);
 
 		$picture 		= Helper::createImage('book', '98x150-', $value['picture']);

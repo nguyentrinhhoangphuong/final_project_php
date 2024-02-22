@@ -74,8 +74,8 @@
         }
     }
 
-    $linkCart = URL::createLink('shop', 'cart', 'cart', null, 'carts.html');
-    $linkSearch =  URL::createLink('shop', 'category', 'index', [
+    $linkCart = URL::createShopLink('shop', 'cart', 'cart', null, 'carts.html');
+    $linkSearch =  URL::createShopLink('shop', 'category', 'index', [
         // 'category_id' => $_GET['category_id'],
         'search_term' => $_GET['search_term'],
         'display_mode' => $_GET['display_mode'],
@@ -85,7 +85,7 @@
     ?>
  <div class="navbar navbar-expand-lg navbar-light">
      <div class="container">
-         <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="<?php echo URL::createLink('shop', 'index', 'index', null, 'index.html'); ?>">
+         <a class="navbar-brand d-none d-sm-block me-3 flex-shrink-0" href="<?php echo URL::createShopLink('shop', 'index', 'index', null, 'index.html'); ?>">
              Book Store
          </a>
          <!-- Search-->

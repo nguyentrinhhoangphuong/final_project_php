@@ -1,5 +1,5 @@
 <?php
-$paginationHTML = $this->paging->getPaginationHtml(URL::createLink(
+$paginationHTML = $this->paging->getPaginationHtml(URL::createShopLink(
     'shop',
     'blog',
     'index',
@@ -13,7 +13,7 @@ if (isset($this->_blogs)) {
         $image = Helper::createImage("blog", "", $item['picture'], array("alt" => "Post", 'class' => "card-img-top"));
         $name = $item['name'];
         $content = Helper::shortenString($item['content']);
-        $link = URL::createLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
+        $link = URL::createShopLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
         $xhtmlAllBlogs .= '<article class="masonry-grid-item">
                                 <a class="blog-entry-thumb" style="height: 15rem;" href="' . $link . '">' . $image . '</a>
                                 <div class="card-body mt-2">

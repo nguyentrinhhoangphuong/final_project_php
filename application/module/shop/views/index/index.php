@@ -1,9 +1,9 @@
 <?php
 function heading($title, $id)
 {
-	$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category-details-' . $id . '.html');
+	$linkCategory = URL::createShopLink('shop', 'category', 'index', null, 'category-details-' . $id . '.html');
 	if ($id == 'all') {
-		$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category.html');
+		$linkCategory = URL::createShopLink('shop', 'category', 'index', null, 'category.html');
 	}
 	$heading = "<div class='d-flex flex-wrap justify-content-between align-items-center pt-1 border-bottom pb-4 mb-4'>
 				<h2 class='h3 mb-0 pt-3 me-2'>$title</h2>
@@ -23,7 +23,7 @@ if (isset($this->listCategory)) {
 	$xhtmlListCategory .= '<div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;gutter&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:3},&quot;576&quot;:{&quot;items&quot;:4},&quot;992&quot;:{&quot;items&quot;:8}}}">';
 	foreach ($this->listCategory as $item) {
 		$nameCategory = $item['name'];
-		$link = URL::createLink("shop", "category", 'index', null, "category-details-" . $item['id'] . ".html");
+		$link = URL::createShopLink("shop", "category", 'index', null, "category-details-" . $item['id'] . ".html");
 		$image = Helper::createImage("category", "", $item['picture'], array('class' => 'rounded-start', 'width' => '175px'));
 		$xhtmlListCategory .= '<article>
 								<a href="' . $link . '">' . $image . '</a>
@@ -51,10 +51,10 @@ if (isset($this->specialBooks)) {
 		$pay = Helper::cmsPay($item);
 		$category = $item['category_name'];
 		$picture = Helper::getImage('book', $item['picture']);
-		$link = URL::createLink('shop', 'book', 'detail', null, "book-details-" . $bookID . ".html");
-		$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category-details-' . $catID . '.html');
+		$link = URL::createShopLink('shop', 'book', 'detail', null, "book-details-" . $bookID . ".html");
+		$linkCategory = URL::createShopLink('shop', 'category', 'index', null, 'category-details-' . $catID . '.html');
 		$infoBook = ['bookId' => $bookID, 'bookName' => $name, 'picture' => $item['picture'], 'quantity' => 1, 'price' => $pay];
-		$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
+		$linkAddToCart = URL::createShopLink('shop', 'cart', 'addToCart');
 		$xhtml .= "<div class='col-lg-3 col-md-4 col-sm-6 px-2 mb-4'>
 					<div class='card product-card'>
 						<a class='card-img-top d-block overflow-hidden' href='$link'>$picture</a>
@@ -113,10 +113,10 @@ if (isset($this->bookByCategory)) {
 			$payBookByCategory = Helper::cmsPay($book);
 			$category = $book['category_name'];
 			$picture = Helper::getImage('book', $book['picture']);
-			$link = URL::createLink('shop', 'book', 'detail', null, "book-details-" . $bookID . ".html");
-			$linkCategory = URL::createLink('shop', 'category', 'index', null, 'category-details-' . $book['category_id'] . '.html');
+			$link = URL::createShopLink('shop', 'book', 'detail', null, "book-details-" . $bookID . ".html");
+			$linkCategory = URL::createShopLink('shop', 'category', 'index', null, 'category-details-' . $book['category_id'] . '.html');
 			$infoBook = ['bookId' => $bookID, 'bookName' => $name, 'picture' => $book['picture'], 'quantity' => 1, 'price' => $payBookByCategory];
-			$linkAddToCart = URL::createLink('shop', 'cart', 'addToCart');
+			$linkAddToCart = URL::createShopLink('shop', 'cart', 'addToCart');
 			if ($i <= 8) {
 				$xhtmlBookByCategory .= '<div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
 											<div class="card product-card">
@@ -164,7 +164,7 @@ if (isset($this->blog)) {
 	foreach ($this->blog as $item) {
 		$name = $item['name'];
 		$created_by = $item['created_by'];
-		$link = URL::createLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
+		$link = URL::createShopLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
 		$image = Helper::createImage('blog', '', $item['picture'], array('class' => 'rounded-3', 'alt' => 'Blog image', 'width' => 390, 'height' => 240));
 		$xhtmlBlog .= '<article>
 		 							<a class="blog-entry-thumb mb-3" href="' . $link . '">

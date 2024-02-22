@@ -1,21 +1,7 @@
 <?php
 class URL
 {
-
-	// public static function createLink($module, $controller, $action, $params = null, $router = null)
-	// {
-	// 	$linkParams = '';
-	// 	if (!empty($router)) return ROOT_URL . $router;
-	// 	if (!empty($params)) {
-	// 		foreach ($params as $key => $value) {
-	// 			$linkParams .= "&$key=$value";
-	// 		}
-	// 	}
-	// 	$url = ROOT_URL . 'index.php?module=' . $module . '&controller=' . $controller . '&action=' . $action . $linkParams;
-	// 	return $url;
-	// }
-
-	public static function createLink($module, $controller, $action, $params = null, $router = null)
+	public static function createShopLink($module, $controller, $action, $params = null, $router = null)
 	{
 		$linkParams = '';
 		if (!empty($params)) {
@@ -36,8 +22,19 @@ class URL
 		}
 	}
 
+	public static function createLink($module, $controller, $action, $params = null, $router = null)
+	{
+		$linkParams = '';
+		if (!empty($router)) return ROOT_URL . $router;
+		if (!empty($params)) {
+			foreach ($params as $key => $value) {
+				$linkParams .= "&$key=$value";
+			}
+		}
 
-
+		$url = ROOT_URL . 'index.php?module=' . $module . '&controller=' . $controller . '&action=' . $action . $linkParams;
+		return $url;
+	}
 
 
 	public static function createParams($module, $controller, $action, $params = null, $router = null)

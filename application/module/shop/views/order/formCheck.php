@@ -1,5 +1,5 @@
 <?php
-$linKCheck = URL::createLink('shop', 'order', 'checkOrder');
+$linKCheck = URL::createShopLink('shop', 'order', 'checkOrder', null, 'check-order-code.html');
 ?>
 <div class="container py-5 mb-2 mb-md-3">
     <h3 class="text-center">Kiểm tra đơn hàng</h3>

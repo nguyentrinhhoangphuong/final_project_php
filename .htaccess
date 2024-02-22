@@ -15,6 +15,7 @@ RewriteRule		faq.html 		    index.php?module=shop&controller=faq&action=index
 RewriteRule		about.html 		    index.php?module=shop&controller=about&action=about
 RewriteRule		contact.html 	    index.php?module=shop&controller=contact&action=about
 RewriteRule		check-order.html    index.php?module=shop&controller=order&action=viewCheckOrder
+RewriteRule		check-order-code.html    index.php?module=shop&controller=order&action=checkOrder
 RewriteRule		cart.html 		    index.php?module=shop&controller=cart&action=cart
 
 RewriteRule		book-details-([0-9]+)\.html 		    index.php?module=shop&controller=book&action=detail&book_id=$1

@@ -1,7 +1,7 @@
 <?php
-$login = URL::createLink('shop', 'index', 'login');
+$login = URL::createShopLink('shop', 'index', 'login');
 $token = md5(uniqid(rand(), true));
-$register = URL::createLink('shop', 'index', 'register');
+$register = URL::createShopLink('shop', 'index', 'register');
 
 ?>
 <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">

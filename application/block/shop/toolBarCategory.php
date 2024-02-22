@@ -2,7 +2,7 @@
 
 $category_id = isset($_GET['category_id']) ? intval($_GET['category_id']) : 0;
 
-$linkList = URL::createLink(
+$linkList = URL::createShopLink(
     'shop',
     'category',
     'index',
@@ -16,7 +16,7 @@ $linkList = URL::createLink(
     'category-details-' . $category_id . '.html'
 );
 
-$linkGrid = URL::createLink(
+$linkGrid = URL::createShopLink(
     'shop',
     'category',
     'index',
@@ -54,7 +54,7 @@ $sortingOrder = isset($_GET['sorting_order']) ? $_GET['sorting_order'] : 'defaul
     <div class="d-flex flex-wrap">
         <div class="d-flex align-items-center flex-nowrap me-3 me-sm-4 pb-3">
             <label class="text-light fs-sm opacity-75 text-nowrap me-2 d-none d-sm-block" for="sorting">Sort by:</label>
-            <div id="base-url" data-url="<?php echo URL::createLink('shop', 'category', 'index', array(
+            <div id="base-url" data-url="<?php echo URL::createShopLink('shop', 'category', 'index', array(
                                                 // 'category_id' => $_GET['category_id'],
                                                 'search_term' => $_GET['search_term'],
                                                 'display_mode' => $_GET['display_mode'],

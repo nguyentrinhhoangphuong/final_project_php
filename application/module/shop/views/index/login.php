@@ -9,7 +9,7 @@ $rowPassword	= Helper::cmsRow('Password', Helper::cmsInput('text', 'form[passwor
 $rowEmail		= Helper::cmsRow('Email', Helper::cmsInput('text', 'form[email]', 'email', null, 'contact_input'));
 $rowSubmit		= Helper::cmsRow('Submit', $inputToken . $inputSubmit, true);
 
-$linkAction		= URL::createLink('default', 'index', 'login');
+$linkAction		= URL::createShopLink('default', 'index', 'login');
 ?>
 
 <!-- TITLE -->

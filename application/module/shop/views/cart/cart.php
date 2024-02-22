@@ -1,9 +1,9 @@
 <?php
 // LINK
-$linkAllBooks = URL::createLink('shop', 'category', 'index', null, 'category.html');
-$linkUpdateCart = URL::createLink('shop', 'cart', 'updateCart');
-$linkDeleteItem = URL::createLink('shop', 'cart', 'deleteItem');
-$linkCheckout = URL::createLink('shop', 'order', 'index', null, 'checkout.html');
+$linkAllBooks = URL::createShopLink('shop', 'category', 'index', null, 'category.html');
+$linkUpdateCart = URL::createShopLink('shop', 'cart', 'updateCart');
+$linkDeleteItem = URL::createShopLink('shop', 'cart', 'deleteItem');
+$linkCheckout = URL::createShopLink('shop', 'order', 'index', null, 'checkout.html');
 
 // Initialize an empty array if $this->books is not set or is empty
 $this->books = isset($this->books) ? $this->books : array();

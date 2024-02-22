@@ -11,7 +11,7 @@ if (isset($this->_blogRelate)) {;
         $name = $item['name'];
         $created_by = $item['created_by'];
         $image = Helper::createImage("blog", '', $item['picture'], array('width' => 390, 'height' => 228, "alt" => "Post"));
-        $link = URL::createLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
+        $link = URL::createShopLink("shop", 'blog', 'detail', null, 'blog-details-' . $item['id'] . '.html');
         $xhtmlBlogRelate .= '<article>
                                 <a class="blog-entry-thumb mb-3" href="' . $link . '">
                                     ' . $image . '

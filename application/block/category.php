@@ -13,7 +13,7 @@ if (!empty($data)) {
 		$name	 		= $value->name;
 		$id				= $value->id;
 		$nameURL		= URL::filterURL($name);
-		$link	 		= URL::createLink('default', 'book', 'list', array('category_id' => $id), "$nameURL-$id.html");
+		$link	 		= URL::createShopLink('default', 'book', 'list', array('category_id' => $id), "$nameURL-$id.html");
 
 		if ($cateID == $value->id) {
 			$xhtml	.= '<li><a class="active" title="' . $name . '" href="' . $link . '">' . $name . '</a></li>';

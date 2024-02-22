@@ -1,6 +1,6 @@
 <?php
-$linkAllBooks = URL::createLink('shop', 'category', 'index', null, 'category.html');
-$linkViewCheckOrder = URL::createLink('shop', 'order', 'viewCheckOrder', null, 'check-order.html');
+$linkAllBooks = URL::createShopLink('shop', 'category', 'index', null, 'category.html');
+$linkViewCheckOrder = URL::createShopLink('shop', 'order', 'viewCheckOrder', null, 'check-order.html');
 
 $code = $this->code;
 ?>

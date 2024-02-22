@@ -8,8 +8,8 @@ if (count($this->bookSales)) {
         $category_name = $item['category_name'];
         $picture = Helper::createImage("book", '', $item['picture']);
         $price = Helper::cmsSaleOff($item);
-        $link    = URL::createLink("shop", "book", "detail", array('book_id' => $bookID));
-        $linkCategory = URL::createLink('shop', 'category', 'index', array('category_id' => $catID));
+        $link    = URL::createShopLink("shop", "book", "detail", array('book_id' => $bookID));
+        $linkCategory = URL::createShopLink('shop', 'category', 'index', array('category_id' => $catID));
         $xhtml .= "<div class='col-md-4 col-sm-6 px-2 mb-4'>
                     <div class='card product-card'>
                         <button class='btn-wishlist btn-sm' type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist'><i class='ci-heart'></i></button>
